@@ -20,7 +20,7 @@ module.exports = {
 const CHAR_TICK = figures.tick;
 const CHAR_CROSS = figures.cross;
 const INDENT = ' ';
-const NUM_LINES = 4;
+const NUM_LINES = 2;
 
 const OPERATORS = {
   equal: 'equal',
@@ -43,9 +43,9 @@ function successAssert({ id, name, odd }) {
 function failedAssert({ id, name, diag = {}, odd }) {
   // Message
   const nameColorized = odd ? `${name} (${id})` : chalk.dim(`${name} (${id})`);
-  process.stdout.write(`\n${chalk.red(CHAR_CROSS)} ${nameColorized}\n`);
+  process.stdout.write(`${chalk.red(CHAR_CROSS)} ${nameColorized}\n`);
 
-  println(chalk.bold('\n## Overview'), 4);
+  println(chalk.bold('Overview'), 4);
 
   // Details
   if (diag.operator === OPERATORS.equal) {
@@ -56,6 +56,8 @@ function failedAssert({ id, name, diag = {}, odd }) {
     process.stdout.write(
       `    found: ${chalk.bgRed.black(` ${diag.actual} `)}\n`
     );
+    printLocation(diag);
+
   } else if (diag.operator === OPERATORS.deepEqual) {
     const expected = diag.expected
       .replace(/([a-z]*):/g, '"$1":')
@@ -75,26 +77,30 @@ function failedAssert({ id, name, diag = {}, odd }) {
     const delta = jsondiffpatch.diff(JSON.parse(actual), JSON.parse(expected));
     const output = jsondiffpatch.formatters.console.format(delta);
 
-    println(chalk.bold('\n## Difference'), 4);
+    println(chalk.bold('\nDifference'), 4);
     println(output, 4);
-
-    println(chalk.bold('\n## Location'), 4);
-    const fileAndLine = diag.at.match(/\((.*)\)/)[1];
-    const file = fileAndLine.match(/[^:]*/)[0];
-    const line = diag.at.match(/:(\d+):/)[1];
-
-    println(`${chalk.dim(fileAndLine)}\n`, 4);
-    const lines = readLines(file, parseInt(line));
-    println(chalk.dim(lines), 4);
+    printLocation(diag);
   }
+  console.log();
+}
+
+function printLocation(diag) {
+  println(chalk.bold('\nLocation'), 4);
+  const fileAndLine = diag.at.match(/\((.*)\)/)[1];
+  const file = fileAndLine.match(/[^:]*/)[0];
+  const line = diag.at.match(/:(\d+):/)[1];
+
+  println(`${chalk.dim(fileAndLine)}\n`, 4);
+  const lines = readLines(file, parseInt(line));
+  println(chalk.dim(lines), 4);
 }
 
 function readLines(filePath, lineNum) {
   return fs
     .readFileSync(filePath, 'utf-8')
     .split('\n')
-    .map((line, i) => `${i}: ${line}`)
-    .filter((line, i) => i > lineNum - NUM_LINES && i < lineNum + NUM_LINES)
+    .map((line, i) => `${i + 1}: ${line}`)
+    .filter((line, i) => i + 1 > lineNum - NUM_LINES && i + 1 < lineNum + NUM_LINES)
     .join('\n');
 }
 
