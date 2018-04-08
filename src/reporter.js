@@ -3,39 +3,40 @@ const chalk = require('chalk');
 const { Duplex } = require('stream');
 const format = require('./formatter.js');
 
+let odd = true;
+const stats = {
+  numTests: 0,
+  numPassed: 0,
+  numFailed: 0,
+  duration: 0
+};
+
 module.exports = reporter;
 
 function reporter() {
-  const parser = new Parser({
-    strict: true,
-    preserveWhitespace: true,
-    passes: true
-  });
+  const parser = new Parser({ strict: true });
   const duplex = getDuplex(parser, () => {});
 
   duplex.on('finish', () => parser.end());
 
-  parser.on('result', handlePlan);
-  parser.on('diag', handlePlan);
-  parser.on('line', handleLine);
-  parser.on('comment', handleComment);
-  parser.on('plan', handlePlan);
+  parser.on('version', handleVersion);
   parser.on('assert', handleAssert);
+  parser.on('comment', handleComment);
   parser.on('complete', handleComplete);
-  parser.on('child', handleChild);
   parser.on('bailout', handleBailout);
   parser.on('extra', handleExtra); // Anything not covered by tap-parser
 
   return duplex;
 }
 
-function handleLine(line) {
-  console.log(line);
+function startTest(version) {
+  stats.duration = Date.now();
+  format.version(version);
+  format.startTest();
 }
 
-function handlePlan(plan) {
-  console.log('plan');
-  console.log(plan);
+function handleVersion(version) {
+  startTest(version);
 }
 
 function handleBailout(reason) {
@@ -44,28 +45,39 @@ function handleBailout(reason) {
 }
 
 function handleAssert(assert) {
-  console.log(chalk.bold.blue('assert'));
-  console.log(assert);
-  // assert.ok ? format.successAssert(assert) : format.failedAssert(assert);
+  if (assert.ok) {
+    stats.numPassed += 1;
+    format.successAssert({ ...assert, duration: stats.duration, odd });
+  } else {
+    stats.numFailed += 1;
+    format.failedAssert({ ...assert, duration: stats.duration, odd });
+  }
+
+  stats.numTests += 1;
+  odd = !odd;
 }
 
 function handleComment(comment) {
-  // console.log(`comment: ${comment}`);
-}
-
-function handleChild(child) {
-  console.log(chalk.bold.blue('child: \n'));
-  console.log(chalk.green(`child.name ${child.name}`));
-  console.log(chalk.green(`child.level ${child.level}`));
-  console.log(child.parent);
+  // console.log(chalk.yellow(`comment: ${comment}`));
 }
 
 function handleExtra(extra) {
-  // console.log(`extra: ${extra}`);
+  console.log(chalk.red(`extra: ${extra}`));
 }
 
 function handleComplete() {
-  console.log('complete');
+  endTest();
+}
+
+function endTest() {
+  stats.duration = Date.now() - stats.duration;
+
+  format.endTest({
+    numTests: stats.numTests,
+    numPassed: stats.numPassed,
+    numFailed: stats.numFailed,
+    duration: stats.duration
+  });
 }
 
 function getDuplex(writer, reader) {

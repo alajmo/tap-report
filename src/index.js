@@ -6,6 +6,6 @@ function handleTapStream() {
   process.stdin.pipe(reporter()).pipe(process.stdout);
 
   process.on('exit', status => {
-    console.log(`Exit with status: ${status}`);
+    process.stdout.write(`\nExit with status: ${status}`);
   });
 }
