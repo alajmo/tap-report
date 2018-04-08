@@ -1,0 +1,22 @@
+#!/usr/bin/env node
+
+const pkg = require('../package.json');
+require('please-upgrade-node')(pkg); // Validate tap-view dependency on Node
+const program = require('commander');
+const handleTapStream = require('../src/index.js');
+
+program
+  .version(pkg.version)
+  .description('tap reporter')
+  .on('--help', () => {
+    console.log(`
+  Examples:
+
+    Build project
+    $ <tap output> | tap-view
+
+  `);
+  })
+  .parse(process.argv);
+
+handleTapStream();
