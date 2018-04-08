@@ -32,14 +32,20 @@ not ok 4 - Summarized correctly # TODO Not written yet
 <TAP Version>
 
 # Tests
+
 ✔ <id>, <description>, <time it took to run test>
 ✖ <id>, <description>, <time it took to run test>
+    <operator>
+    <expected>
+    <found>
     <Location of failed test>
 
 # Summary
-Passed: x
-Failed: y
-Skipped: z (Only showed if some tests are skipped)
+
+Total: x
+Passed: y
+Failed: z
+Skipped: k (Only show line if some tests are skipped)
 
 <Total time>
 ```
