@@ -2,19 +2,19 @@ TAP version 13
 
 # Tests
 
-✖ optional message 0 (1)
+✖  1 - optional message 0
     Overview
 
-✖ optional message 1 (2)
+✖  2 - optional message 1
     Overview
 
-✖ optional message 2 (3)
+✖  3 - optional message 2
     Overview
 
-✖ deep equal 2 (4)
+✖  4 - deep equal 2
     Overview
 
-✖ deep equal 2 (5)
+✖  5 - deep equal 2
     Overview
 
 
@@ -24,6 +24,6 @@ Total: 5
 Passed: 0
 Failed: 5
 
-Duration: 97ms
+Duration: 25ms
 
  5 out of 5 tests failed! 

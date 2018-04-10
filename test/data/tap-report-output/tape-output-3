@@ -2,8 +2,8 @@ TAP version 13
 
 # Tests
 
-✔ optional message 0 (1)
-✖ optional message 1 (2)
+✔  1 - optional message 0
+✖  2 - optional message 1
     Overview
     operator: equal
     expected:  2 
@@ -16,9 +16,9 @@ TAP version 13
     6:   t.equal('a', 2, 'optional message 1');
     7:   t.end();
 
-✔ optional message 2 (3)
-✔ deep equal 2 (4)
-✖ deep equal 2 (5)
+✔  3 - optional message 2
+✔  4 - deep equal 2
+✖  5 - deep equal 2
     Overview
     operator: deepEqual
     expected:  { ello: { world: 'my friend' } } 
@@ -48,6 +48,6 @@ Total: 5
 Passed: 3
 Failed: 2
 
-Duration: 86ms
+Duration: 87ms
 
  2 out of 5 tests failed! 

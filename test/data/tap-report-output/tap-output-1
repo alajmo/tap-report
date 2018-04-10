@@ -2,11 +2,11 @@ TAP version 13
 
 # Tests
 
-✔ optional message 0 (1)
-✔ optional message 1 (2)
-✔ optional message 2 (3)
-✔ deep equal 2 (4)
-✔ deep equal 2 (5)
+✔  1 - optional message 0
+✔  2 - optional message 1
+✔  3 - optional message 2
+✔  4 - deep equal 2
+✔  5 - deep equal 2
 
 # Summary
 
@@ -15,4 +15,4 @@ Passed: 5
 
  All tests passed! 
 
-Duration: 991ms
+Duration: 1s
