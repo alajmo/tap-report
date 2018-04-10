@@ -1,0 +1,23 @@
+TAP version 13
+
+# Tests
+
+✔ optional message 0 (1)
+✖ optional message 1 (2)
+    Overview
+
+✔ optional message 2 (3)
+✔ deep equal 2 (4)
+✖ deep equal 2 (5)
+    Overview
+
+
+# Summary
+
+Total: 5
+Passed: 3
+Failed: 2
+
+Duration: 75ms
+
+ 2 out of 5 tests failed! 

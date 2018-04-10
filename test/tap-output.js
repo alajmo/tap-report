@@ -1,12 +1,7 @@
-const test = require('tape');
+const tap = require('tap');
 
-test('Test message 1', t => {
+tap('Test message 1', t => {
   t.equal(1 === 1, true, 'optional message 0');
   t.equal(1 === 2, true, 'optional message 1');
   t.end();
 });
-
-// test('Test message 2', t => {
-//   t.equal(0 === 1, true, 'optional message 2');
-//   t.end();
-// });

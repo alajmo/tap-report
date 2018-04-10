@@ -1,0 +1,40 @@
+TAP version 13
+ok 1 - optional message 0
+not ok 2 - optional message 1
+  ---
+  found: a
+  wanted: 2
+  compare: ===
+  at:
+    line: 5
+    column: 5
+    file: test/tests/tap-output-3.js
+  stack: |
+    Object.<anonymous> (test/tests/tap-output-3.js:5:5)
+  source: |
+    tap.equal('a', 2, 'optional message 1');
+  ...
+
+ok 3 - optional message 2
+ok 4 - deep equal 2
+not ok 5 - deep equal 2
+  ---
+  found:
+    hello:
+      world: my friend
+  wanted:
+    ello:
+      world: my friend
+  at:
+    line: 11
+    column: 5
+    file: test/tests/tap-output-3.js
+  stack: |
+    Object.<anonymous> (test/tests/tap-output-3.js:11:5)
+  source: |
+    tap.deepEqual(
+  ...
+
+1..5
+# failed 2 of 5 tests
+# time=34.48ms

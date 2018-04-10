@@ -11,9 +11,14 @@ const TEST_DIR = path.join(__dirname, 'tests');
 const TAP_REPORT_BIN = path.resolve(__dirname, '../bin/tap-report');
 const TAP_OUTPUT_DIR = path.join(__dirname, 'data', 'tap-output');
 const TAP_REPORT_OUTPUT_DIR = path.join(__dirname, 'data', 'tap-report-output');
-const TEST_PATHS = ['tap-output-1.js', 'tap-output-2.js'].map(testPath =>
-  path.join(TEST_DIR, testPath)
-);
+const TEST_PATHS = [
+  'tape-output-1.js',
+  'tape-output-2.js',
+  'tape-output-3.js',
+  'tap-output-1.js',
+  'tap-output-2.js',
+  'tap-output-3.js'
+].map(testPath => path.join(TEST_DIR, testPath));
 
 main();
 

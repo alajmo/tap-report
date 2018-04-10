@@ -1,0 +1,94 @@
+TAP version 13
+
+# Tests
+
+✖ optional message 0 (1)
+    Overview
+    operator: equal
+    expected:  true 
+    found:  false 
+    
+    Location
+    /home/samir/Projects/programming/tap-report/test/tests/tape-output-2.js:5:5
+    
+    4: test('Test message 1', t => {
+    5:   t.equal(1 !== 1, true, 'optional message 0');
+    6:   t.equal(2, 3, 'optional message 1');
+
+✖ optional message 1 (2)
+    Overview
+    operator: equal
+    expected:  3 
+    found:  2 
+    
+    Location
+    /home/samir/Projects/programming/tap-report/test/tests/tape-output-2.js:6:5
+    
+    5:   t.equal(1 !== 1, true, 'optional message 0');
+    6:   t.equal(2, 3, 'optional message 1');
+    7:   t.end();
+
+✖ optional message 2 (3)
+    Overview
+    operator: equal
+    expected:  true 
+    found:  false 
+    
+    Location
+    /home/samir/Projects/programming/tap-report/test/tests/tape-output-2.js:11:5
+    
+    10: test('Test message 2', t => {
+    11:   t.equal(1 === 2, true, 'optional message 2');
+    12:   t.end();
+
+✖ deep equal 2 (4)
+    Overview
+    operator: deepEqual
+    expected:  { hello: 'my friend' } 
+    found:  { hello: 'y friend' } 
+    
+    Difference
+    {
+      hello: "y friend" => "my friend"
+    }
+    
+    Location
+    /home/samir/Projects/programming/tap-report/test/tests/tape-output-2.js:16:5
+    
+    15: test('Test message 3', t => {
+    16:   t.deepEqual({ hello: 'y friend' }, { hello: 'my friend' }, 'deep equal 2');
+    17:   t.end();
+
+✖ deep equal 2 (5)
+    Overview
+    operator: deepEqual
+    expected:  { hello: { world: 'my friend' } } 
+    found:  { ello: { world: 'my friend' } } 
+    
+    Difference
+    {
+      ello: {
+        "world": "my friend"
+      }
+      hello: {
+        "world": "my friend"
+      }
+    }
+    
+    Location
+    /home/samir/Projects/programming/tap-report/test/tests/tape-output-2.js:21:5
+    
+    20: test('Test message 3', t => {
+    21:   t.deepEqual(
+    22:     { ello: { world: 'my friend' } },
+
+
+# Summary
+
+Total: 5
+Passed: 0
+Failed: 5
+
+Duration: 78ms
+
+ 5 out of 5 tests failed! 

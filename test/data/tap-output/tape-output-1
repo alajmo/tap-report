@@ -1,0 +1,19 @@
+TAP version 13
+# Test message 0
+# Test message 1
+ok 1 optional message 0
+ok 2 optional message 1
+# Test message 2
+ok 3 optional message 2
+# Test message 3
+ok 4 deep equal 2
+# Test message 4
+ok 5 deep equal 2
+ok 6 optional message 2
+
+1..6
+# tests 6
+# pass  6
+
+# ok
+
