@@ -10,7 +10,7 @@
   "scripts": {
     "test": "node test/index.js run-tests",
     "generate-test-data": "node test/index.js generate-test-data",
-    "dev": "nodemon --quiet --exec \"clear && node test/tap-output.js | ./bin/tap-report \"",
+    "dev": "nodemon --quiet --exec \"clear && node test/tape-output.js | ./bin/tap-report \"",
     "lint": "huel lint --src src",
     "format": "huel format --src src",
     "commitlint": "huel commitmsg",
