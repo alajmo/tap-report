@@ -35,14 +35,14 @@ function version(version) {
 }
 
 function successAssert({ id, name, odd }) {
-  const nameColorized = odd ? `${name} (${id})` : chalk.dim(`${name} (${id})`);
-  process.stdout.write(`${chalk.green(CHAR_TICK)} ${nameColorized}\n`);
+  const nameColorized = odd ? `${name}` : chalk.dim(`${name}`);
+  process.stdout.write(`${chalk.green(CHAR_TICK)}  ${id} - ${nameColorized}\n`);
 }
 
 function failedAssert({ id, name, diag = {}, odd }) {
   // Message
-  const nameColorized = odd ? `${name} (${id})` : chalk.dim(`${name} (${id})`);
-  process.stdout.write(`${chalk.red(CHAR_CROSS)} ${nameColorized}\n`);
+  const nameColorized = odd ? `${name}` : chalk.dim(`${name}`);
+  process.stdout.write(`${chalk.red(CHAR_CROSS)}  ${id} - ${nameColorized}\n`);
 
   println(chalk.bold('Overview'), 4);
 
