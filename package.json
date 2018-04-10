@@ -1,21 +1,18 @@
 {
-  "name": "tap-pat",
-  "version": "0.1.0-alpha.1",
+  "name": "tap-report",
+  "version": "0.1.0-alpha.2",
   "description": "",
-  "main": "index.js",
+  "main": "./bin/tap-report",
   "directories": {
+    "src": "src",
     "test": "test"
   },
   "scripts": {
-    "test": "node test/index.js | ./bin/tap-view",
-    "start": "huel build --env development --debug -w -p 1337 -t src/index.html -e src/index.js -o dist/",
-    "start-prod": "huel build --env production --debug -w -p 1337 -t src/index.html -e src/index.js -o dist/",
-    "build": "huel build --env production -t src/index.html -e src/index.js -o dist/",
-    "build-debug": "huel build --env production --debug -t src/index.html -e src/index.js -o dist/",
+    "test": "node test/index.js run-tests",
+    "generate-test-data": "node test/index.js generate-test-data",
+    "dev": "nodemon --quiet --exec \"clear && node test/tap-output.js | ./bin/tap-report \"",
     "lint": "huel lint --src src",
-    "lint-watch": "huel lint -w",
     "format": "huel format --src src",
-    "format-watch": "huel format -w",
     "commitlint": "huel commitmsg",
     "changelog": "huel changelog && git add CHANGELOG.md && git commit -m \"chore: update changelog\""
   },
@@ -30,10 +27,12 @@
     "tap-parser": "7.0.0"
   },
   "devDependencies": {
-    "huel": "1.0.0-alpha.22",
+    "del": "3.0.0",
+    "diff": "3.5.0",
+    "huel": "1.0.0-alpha.23",
+    "husky": "0.15.0-rc.13",
+    "nodemon": "1.17.3",
     "tap": "11.1.3",
-    "tap-diff": "0.1.1",
-    "tap-summary": "4.0.0",
     "tape": "4.9.0"
   },
   "engines": {

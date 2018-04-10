@@ -1,0 +1,29 @@
+TAP version 13
+
+# Tests
+
+✔ optional message 0 (1)
+✔ optional message 1 (2)
+✖ optional message 2 (3)
+    Overview
+    operator: equal
+    expected:  true 
+    found:  false 
+    
+    Location
+    /home/samir/Projects/programming/tap-report/test/tests/tap-output-1.js:10:5
+    
+    9: test('Test message 2', t => {
+    10:   t.equal(0 === 1, true, 'optional message 2');
+    11:   t.end();
+
+
+# Summary
+
+Total: 3
+Passed: 2
+Failed: 1
+
+Duration: 9ms
+
+ 1 out of 3 tests failed! 

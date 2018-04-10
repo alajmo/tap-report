@@ -1,0 +1,110 @@
+TAP version 13
+
+# Tests
+
+✔ 0 === 0 (1)
+✖ 0 === 1 (2)
+    Overview
+    operator: equal
+    expected:  san 
+    found:  hej 
+    
+    Location
+    /home/samir/Projects/programming/tap-report/test/tests/tap-output-2.js:5:5
+    
+    4:   t.equal(0 === 0, true, '0 === 0');
+    5:   t.equal('hej', 'san', '0 === 1');
+    6:   t.deepEqual(
+
+✖ deepEqual (3)
+    Overview
+    operator: deepEqual
+    expected:  { han: 1, hej: 'sa', lala: 'land', sup: [ 2, 5 ] } 
+    found:  { han: 1, hej: 'san', lala: 'land', sup: [ 1, 2, 3 ] } 
+    
+    Difference
+    {
+      hej: "san" => "sa"
+      sup: [
+        0: 1
+        1: 5
+        2: 3
+      ]
+    }
+    
+    Location
+    /home/samir/Projects/programming/tap-report/test/tests/tap-output-2.js:6:5
+    
+    5:   t.equal('hej', 'san', '0 === 1');
+    6:   t.deepEqual(
+    7:     { han: 1, hej: 'san', lala: 'land', sup: [1, 2, 3] },
+
+✔ optional message 5 (4)
+✔ optional message 6 (5)
+✔ optional message 7 (6)
+✔ optional message 0 (7)
+✖ optional message 1 (8)
+    Overview
+    operator: equal
+    expected:  true 
+    found:  false 
+    
+    Location
+    /home/samir/Projects/programming/tap-report/test/tests/tap-output-2.js:24:5
+    
+    23:   t.equal(1 === 1, true, 'optional message 0');
+    24:   t.equal(1 === 2, true, 'optional message 1');
+    25:   t.end();
+
+✖ optional message 2 (9)
+    Overview
+    operator: equal
+    expected:  true 
+    found:  false 
+    
+    Location
+    /home/samir/Projects/programming/tap-report/test/tests/tap-output-2.js:29:5
+    
+    28: test('Test message 2', t => {
+    29:   t.equal(0 === 1, true, 'optional message 2');
+    30:   t.end();
+
+✖ optional message 3 (10)
+    Overview
+    operator: equal
+    expected:  true 
+    found:  false 
+    
+    Location
+    /home/samir/Projects/programming/tap-report/test/tests/tap-output-2.js:34:5
+    
+    33: test('Test message 3', t => {
+    34:   t.equal(0 === 1, true, 'optional message 3');
+    35:   t.equal(1 === 2, true, 'optional message 4');
+
+✖ optional message 4 (11)
+    Overview
+    operator: equal
+    expected:  true 
+    found:  false 
+    
+    Location
+    /home/samir/Projects/programming/tap-report/test/tests/tap-output-2.js:35:5
+    
+    34:   t.equal(0 === 1, true, 'optional message 3');
+    35:   t.equal(1 === 2, true, 'optional message 4');
+    36:   t.end();
+
+✔ optional message 5 (12)
+✔ optional message 6 (13)
+✔ optional message 7 (14)
+
+# Summary
+
+Total: 14
+Passed: 8
+Failed: 6
+
+Duration: 18ms
+
+ 6 out of 14 tests failed! 

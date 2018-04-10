@@ -1,0 +1,137 @@
+TAP version 13
+# Test message 3
+ok 1 0 === 0
+not ok 2 0 === 1
+  ---
+    operator: equal
+    expected: 'san'
+    actual:   'hej'
+    at: Test.t (/home/samir/Projects/programming/tap-report/test/tests/tap-output-2.js:5:5)
+    stack: |-
+      Error: 0 === 1
+          at Test.assert [as _assert] (/home/samir/Projects/programming/tap-report/node_modules/tape/lib/test.js:225:54)
+          at Test.bound [as _assert] (/home/samir/Projects/programming/tap-report/node_modules/tape/lib/test.js:77:32)
+          at Test.equal.Test.equals.Test.isEqual.Test.is.Test.strictEqual.Test.strictEquals (/home/samir/Projects/programming/tap-report/node_modules/tape/lib/test.js:388:10)
+          at Test.bound [as equal] (/home/samir/Projects/programming/tap-report/node_modules/tape/lib/test.js:77:32)
+          at Test.t (/home/samir/Projects/programming/tap-report/test/tests/tap-output-2.js:5:5)
+          at Test.bound [as _cb] (/home/samir/Projects/programming/tap-report/node_modules/tape/lib/test.js:77:32)
+          at Test.run (/home/samir/Projects/programming/tap-report/node_modules/tape/lib/test.js:96:10)
+          at Test.bound [as run] (/home/samir/Projects/programming/tap-report/node_modules/tape/lib/test.js:77:32)
+          at Immediate.next (/home/samir/Projects/programming/tap-report/node_modules/tape/lib/results.js:71:15)
+          at runCallback (timers.js:789:20)
+  ...
+not ok 3 deepEqual
+  ---
+    operator: deepEqual
+    expected: |-
+      { han: 1, hej: 'sa', lala: 'land', sup: [ 2, 5 ] }
+    actual: |-
+      { han: 1, hej: 'san', lala: 'land', sup: [ 1, 2, 3 ] }
+    at: Test.t (/home/samir/Projects/programming/tap-report/test/tests/tap-output-2.js:6:5)
+    stack: |-
+      Error: deepEqual
+          at Test.assert [as _assert] (/home/samir/Projects/programming/tap-report/node_modules/tape/lib/test.js:225:54)
+          at Test.bound [as _assert] (/home/samir/Projects/programming/tap-report/node_modules/tape/lib/test.js:77:32)
+          at Test.deepEqual.Test.deepEquals.Test.isEquivalent.Test.same (/home/samir/Projects/programming/tap-report/node_modules/tape/lib/test.js:421:10)
+          at Test.bound [as deepEqual] (/home/samir/Projects/programming/tap-report/node_modules/tape/lib/test.js:77:32)
+          at Test.t (/home/samir/Projects/programming/tap-report/test/tests/tap-output-2.js:6:5)
+          at Test.bound [as _cb] (/home/samir/Projects/programming/tap-report/node_modules/tape/lib/test.js:77:32)
+          at Test.run (/home/samir/Projects/programming/tap-report/node_modules/tape/lib/test.js:96:10)
+          at Test.bound [as run] (/home/samir/Projects/programming/tap-report/node_modules/tape/lib/test.js:77:32)
+          at Immediate.next (/home/samir/Projects/programming/tap-report/node_modules/tape/lib/results.js:71:15)
+          at runCallback (timers.js:789:20)
+  ...
+# Test message 4
+ok 4 optional message 5
+ok 5 optional message 6
+ok 6 optional message 7
+# Test message 1
+ok 7 optional message 0
+not ok 8 optional message 1
+  ---
+    operator: equal
+    expected: true
+    actual:   false
+    at: Test.t (/home/samir/Projects/programming/tap-report/test/tests/tap-output-2.js:24:5)
+    stack: |-
+      Error: optional message 1
+          at Test.assert [as _assert] (/home/samir/Projects/programming/tap-report/node_modules/tape/lib/test.js:225:54)
+          at Test.bound [as _assert] (/home/samir/Projects/programming/tap-report/node_modules/tape/lib/test.js:77:32)
+          at Test.equal.Test.equals.Test.isEqual.Test.is.Test.strictEqual.Test.strictEquals (/home/samir/Projects/programming/tap-report/node_modules/tape/lib/test.js:388:10)
+          at Test.bound [as equal] (/home/samir/Projects/programming/tap-report/node_modules/tape/lib/test.js:77:32)
+          at Test.t (/home/samir/Projects/programming/tap-report/test/tests/tap-output-2.js:24:5)
+          at Test.bound [as _cb] (/home/samir/Projects/programming/tap-report/node_modules/tape/lib/test.js:77:32)
+          at Test.run (/home/samir/Projects/programming/tap-report/node_modules/tape/lib/test.js:96:10)
+          at Test.bound [as run] (/home/samir/Projects/programming/tap-report/node_modules/tape/lib/test.js:77:32)
+          at Immediate.next (/home/samir/Projects/programming/tap-report/node_modules/tape/lib/results.js:71:15)
+          at runCallback (timers.js:789:20)
+  ...
+# Test message 2
+not ok 9 optional message 2
+  ---
+    operator: equal
+    expected: true
+    actual:   false
+    at: Test.t (/home/samir/Projects/programming/tap-report/test/tests/tap-output-2.js:29:5)
+    stack: |-
+      Error: optional message 2
+          at Test.assert [as _assert] (/home/samir/Projects/programming/tap-report/node_modules/tape/lib/test.js:225:54)
+          at Test.bound [as _assert] (/home/samir/Projects/programming/tap-report/node_modules/tape/lib/test.js:77:32)
+          at Test.equal.Test.equals.Test.isEqual.Test.is.Test.strictEqual.Test.strictEquals (/home/samir/Projects/programming/tap-report/node_modules/tape/lib/test.js:388:10)
+          at Test.bound [as equal] (/home/samir/Projects/programming/tap-report/node_modules/tape/lib/test.js:77:32)
+          at Test.t (/home/samir/Projects/programming/tap-report/test/tests/tap-output-2.js:29:5)
+          at Test.bound [as _cb] (/home/samir/Projects/programming/tap-report/node_modules/tape/lib/test.js:77:32)
+          at Test.run (/home/samir/Projects/programming/tap-report/node_modules/tape/lib/test.js:96:10)
+          at Test.bound [as run] (/home/samir/Projects/programming/tap-report/node_modules/tape/lib/test.js:77:32)
+          at Immediate.next (/home/samir/Projects/programming/tap-report/node_modules/tape/lib/results.js:71:15)
+          at runCallback (timers.js:789:20)
+  ...
+# Test message 3
+not ok 10 optional message 3
+  ---
+    operator: equal
+    expected: true
+    actual:   false
+    at: Test.t (/home/samir/Projects/programming/tap-report/test/tests/tap-output-2.js:34:5)
+    stack: |-
+      Error: optional message 3
+          at Test.assert [as _assert] (/home/samir/Projects/programming/tap-report/node_modules/tape/lib/test.js:225:54)
+          at Test.bound [as _assert] (/home/samir/Projects/programming/tap-report/node_modules/tape/lib/test.js:77:32)
+          at Test.equal.Test.equals.Test.isEqual.Test.is.Test.strictEqual.Test.strictEquals (/home/samir/Projects/programming/tap-report/node_modules/tape/lib/test.js:388:10)
+          at Test.bound [as equal] (/home/samir/Projects/programming/tap-report/node_modules/tape/lib/test.js:77:32)
+          at Test.t (/home/samir/Projects/programming/tap-report/test/tests/tap-output-2.js:34:5)
+          at Test.bound [as _cb] (/home/samir/Projects/programming/tap-report/node_modules/tape/lib/test.js:77:32)
+          at Test.run (/home/samir/Projects/programming/tap-report/node_modules/tape/lib/test.js:96:10)
+          at Test.bound [as run] (/home/samir/Projects/programming/tap-report/node_modules/tape/lib/test.js:77:32)
+          at Immediate.next (/home/samir/Projects/programming/tap-report/node_modules/tape/lib/results.js:71:15)
+          at runCallback (timers.js:789:20)
+  ...
+not ok 11 optional message 4
+  ---
+    operator: equal
+    expected: true
+    actual:   false
+    at: Test.t (/home/samir/Projects/programming/tap-report/test/tests/tap-output-2.js:35:5)
+    stack: |-
+      Error: optional message 4
+          at Test.assert [as _assert] (/home/samir/Projects/programming/tap-report/node_modules/tape/lib/test.js:225:54)
+          at Test.bound [as _assert] (/home/samir/Projects/programming/tap-report/node_modules/tape/lib/test.js:77:32)
+          at Test.equal.Test.equals.Test.isEqual.Test.is.Test.strictEqual.Test.strictEquals (/home/samir/Projects/programming/tap-report/node_modules/tape/lib/test.js:388:10)
+          at Test.bound [as equal] (/home/samir/Projects/programming/tap-report/node_modules/tape/lib/test.js:77:32)
+          at Test.t (/home/samir/Projects/programming/tap-report/test/tests/tap-output-2.js:35:5)
+          at Test.bound [as _cb] (/home/samir/Projects/programming/tap-report/node_modules/tape/lib/test.js:77:32)
+          at Test.run (/home/samir/Projects/programming/tap-report/node_modules/tape/lib/test.js:96:10)
+          at Test.bound [as run] (/home/samir/Projects/programming/tap-report/node_modules/tape/lib/test.js:77:32)
+          at Immediate.next (/home/samir/Projects/programming/tap-report/node_modules/tape/lib/results.js:71:15)
+          at runCallback (timers.js:789:20)
+  ...
+# Test message 4
+ok 12 optional message 5
+ok 13 optional message 6
+ok 14 optional message 7
+
+1..14
+# tests 14
+# pass  8
+# fail  6
+

@@ -2,7 +2,6 @@ const figures = require('figures');
 const chalk = require('chalk');
 const prettyMs = require('pretty-ms');
 const jsondiffpatch = require('jsondiffpatch');
-const readline = require('readline');
 const fs = require('fs');
 
 module.exports = {
@@ -57,7 +56,6 @@ function failedAssert({ id, name, diag = {}, odd }) {
       `    found: ${chalk.bgRed.black(` ${diag.actual} `)}\n`
     );
     printLocation(diag);
-
   } else if (diag.operator === OPERATORS.deepEqual) {
     const expected = diag.expected
       .replace(/([a-z]*):/g, '"$1":')
@@ -100,7 +98,9 @@ function readLines(filePath, lineNum) {
     .readFileSync(filePath, 'utf-8')
     .split('\n')
     .map((line, i) => `${i + 1}: ${line}`)
-    .filter((line, i) => i + 1 > lineNum - NUM_LINES && i + 1 < lineNum + NUM_LINES)
+    .filter(
+      (line, i) => i + 1 > lineNum - NUM_LINES && i + 1 < lineNum + NUM_LINES
+    )
     .join('\n');
 }
 
