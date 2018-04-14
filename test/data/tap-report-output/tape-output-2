@@ -3,12 +3,13 @@ TAP version 13
 # Tests
 
 ✖  1 - optional message 0
-    Overview
+
+    # Overview
     operator: equal
     expected:  true 
     found:  false 
     
-    Location
+    # Location
     /home/samir/Projects/programming/tap-report/test/tests/tape-output-2.js:5:5
     
     4: test('Test message 1', t => {
@@ -16,12 +17,13 @@ TAP version 13
     6:   t.equal(2, 3, 'optional message 1');
 
 ✖  2 - optional message 1
-    Overview
+
+    # Overview
     operator: equal
     expected:  3 
     found:  2 
     
-    Location
+    # Location
     /home/samir/Projects/programming/tap-report/test/tests/tape-output-2.js:6:5
     
     5:   t.equal(1 !== 1, true, 'optional message 0');
@@ -29,12 +31,13 @@ TAP version 13
     7:   t.end();
 
 ✖  3 - optional message 2
-    Overview
+
+    # Overview
     operator: equal
     expected:  true 
     found:  false 
     
-    Location
+    # Location
     /home/samir/Projects/programming/tap-report/test/tests/tape-output-2.js:11:5
     
     10: test('Test message 2', t => {
@@ -42,7 +45,8 @@ TAP version 13
     12:   t.end();
 
 ✖  4 - deep equal 2
-    Overview
+
+    # Overview
     operator: deepEqual
     expected:  { hello: 'my friend' } 
     found:  { hello: 'y friend' } 
@@ -52,7 +56,7 @@ TAP version 13
       hello: "y friend" => "my friend"
     }
     
-    Location
+    # Location
     /home/samir/Projects/programming/tap-report/test/tests/tape-output-2.js:16:5
     
     15: test('Test message 3', t => {
@@ -60,7 +64,8 @@ TAP version 13
     17:   t.end();
 
 ✖  5 - deep equal 2
-    Overview
+
+    # Overview
     operator: deepEqual
     expected:  { hello: { world: 'my friend' } } 
     found:  { ello: { world: 'my friend' } } 
@@ -75,7 +80,7 @@ TAP version 13
       }
     }
     
-    Location
+    # Location
     /home/samir/Projects/programming/tap-report/test/tests/tape-output-2.js:21:5
     
     20: test('Test message 3', t => {
@@ -88,7 +93,6 @@ TAP version 13
 Total: 5
 Passed: 0
 Failed: 5
+Duration: 171ms
 
-Duration: 70ms
-
- 5 out of 5 tests failed! 
+ 5 out of 5 tests failed!

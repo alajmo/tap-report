@@ -4,12 +4,14 @@ TAP version 13
 
 ✔  1 - optional message 0
 ✖  2 - optional message 1
-    Overview
+
+    # Overview
 
 ✔  3 - optional message 2
 ✔  4 - deep equal 2
 ✖  5 - deep equal 2
-    Overview
+
+    # Overview
 
 
 # Summary
@@ -17,7 +19,6 @@ TAP version 13
 Total: 5
 Passed: 3
 Failed: 2
+Duration: 30ms
 
-Duration: 31ms
-
- 2 out of 5 tests failed! 
+ 2 out of 5 tests failed!

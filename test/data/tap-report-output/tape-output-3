@@ -4,12 +4,13 @@ TAP version 13
 
 ✔  1 - optional message 0
 ✖  2 - optional message 1
-    Overview
+
+    # Overview
     operator: equal
     expected:  2 
     found:  a 
     
-    Location
+    # Location
     /home/samir/Projects/programming/tap-report/test/tests/tape-output-3.js:6:5
     
     5:   t.equal(1 === 1, true, 'optional message 0');
@@ -19,7 +20,8 @@ TAP version 13
 ✔  3 - optional message 2
 ✔  4 - deep equal 2
 ✖  5 - deep equal 2
-    Overview
+
+    # Overview
     operator: deepEqual
     expected:  { ello: { world: 'my friend' } } 
     found:  { hello: { world: 'my friend' } } 
@@ -34,7 +36,7 @@ TAP version 13
       }
     }
     
-    Location
+    # Location
     /home/samir/Projects/programming/tap-report/test/tests/tape-output-3.js:21:5
     
     20: test('Test message 3', t => {
@@ -47,7 +49,6 @@ TAP version 13
 Total: 5
 Passed: 3
 Failed: 2
+Duration: 36ms
 
-Duration: 87ms
-
- 2 out of 5 tests failed! 
+ 2 out of 5 tests failed!
