@@ -33,6 +33,13 @@ Examples:
   $ <tap output> | tap-view
 ```
 
+## Inspiration
+
+* [ava](https://github.com/avajs/ava)
+* [faucet](https://github.com/substack/faucet)
+* [tap-summary](https://github.com/zoubin/tap-summary)
+* [tap-diff](https://github.com/axross/tap-diff)
+
 ## Contribution
 
 Follows [Conventional Commits](https://conventionalcommits.org/).
