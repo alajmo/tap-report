@@ -51,26 +51,33 @@ function printTapVersion(version) {
 
 function printSuccessfulAssert({ id, name }) {
   const odd = parseInt(id) % 2;
-  const nameColorized = odd ? `${name}` : chalk.dim(`${name}`);
-  println(`${chalk.green(CHAR_TICK)}  ${id} - ${nameColorized}`);
+  const nameParam = odd ? `${name}` : chalk.dim(`${name}`);
+  const idParam = odd ? `${id}` : chalk.dim(`${id}`);
+
+  println(`${chalk.green(CHAR_TICK)}  ${idParam} - ${nameParam}`);
 }
 
 function printFailedAssert({ id, name, diag = {} }) {
   const odd = parseInt(id) % 2;
 
   // Message
-  const nameColorized = odd ? `${name}` : chalk.dim(`${name}`);
-  println(`${chalk.red(CHAR_CROSS)}  ${id} - ${nameColorized}\n`);
+  const nameParam = odd ? `${name}` : chalk.dim(`${name}`);
+  const idParam = odd ? `${id}` : chalk.dim(`${id}`);
+  const operatorParam = diag.operator;
+  const expectedParam = chalk.bgGreen.black(` ${diag.expected} `);
+  const actualParam = chalk.bgRed.black(` ${diag.actual} `);
+
+  println(`${chalk.red(CHAR_CROSS)}  ${idParam} - ${nameParam}\n`);
 
   println(chalk.bold('# Overview'), 4);
 
   // Details
   if (diag.operator === OPERATORS.equal) {
-    println(`operator: ${diag.operator}`, 4);
-    println(`expected: ${chalk.bgGreen.black(` ${diag.expected} `)}`, 4);
-    println(`found: ${chalk.bgRed.black(` ${diag.actual} `)}`, 4);
-    printLocation(diag);
-  } else if (diag.operator === OPERATORS.deepEqual) {
+    println(`operator: ${operatorParam}`, 4);
+    println(`expected: ${expectedParam}`, 4);
+    println(`found: ${actualParam}`, 4);
+    printFileErrorLines(diag);
+  } else if (operatorParam === OPERATORS.deepEqual) {
     const expected = diag.expected
       .replace(/([a-z]*):/g, '"$1":')
       .replace(/'/g, '"');
@@ -78,21 +85,21 @@ function printFailedAssert({ id, name, diag = {} }) {
       .replace(/([a-z]*):/g, '"$1":')
       .replace(/'/g, '"');
 
-    println(`operator: ${diag.operator}\n`, 4);
-    println(`expected: ${chalk.bgGreen.black(` ${diag.expected} `)}\n`, 4);
-    println(`found: ${chalk.bgRed.black(` ${diag.actual} `)}\n`, 4);
+    println(`operator: ${operatorParam}`, 4);
+    println(`expected: ${chalk.bgGreen.black(` ${diag.expected} `)}`, 4);
+    println(`found: ${chalk.bgRed.black(` ${diag.actual} `)}`, 4);
 
     const delta = jsondiffpatch.diff(JSON.parse(actual), JSON.parse(expected));
     const output = jsondiffpatch.formatters.console.format(delta);
 
     println(chalk.bold('\nDifference'), 4);
     println(output, 4);
-    printLocation(diag);
+    printFileErrorLines(diag);
   }
   println();
 }
 
-function printLocation(diag) {
+function printFileErrorLines(diag) {
   println(chalk.bold('\n# Location'), 4);
   const fileAndLine = diag.at.match(/\((.*)\)/)[1];
   const file = fileAndLine.match(/[^:]*/)[0];
