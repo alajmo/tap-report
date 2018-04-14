@@ -27,8 +27,8 @@ function reporter() {
 
 function startTest(version) {
   stats.duration = Date.now();
-  format.version(version);
-  format.startTest();
+  format.printTapVersion(version);
+  format.printStartTest();
 }
 
 function handleVersion(version) {
@@ -38,17 +38,17 @@ function handleVersion(version) {
 function handleAssert(assert) {
   if (assert.ok) {
     stats.numPassed += 1;
-    format.successAssert({ ...assert, duration: stats.duration });
+    format.printSuccessfulAssert({ ...assert, duration: stats.duration });
   } else {
     stats.numFailed += 1;
-    format.failedAssert({ ...assert, duration: stats.duration });
+    format.printFailedAssert({ ...assert, duration: stats.duration });
   }
 
   stats.numTests += 1;
 }
 
 function handleExtra(extra) {
-  format.formatExtra();
+  format.printExtra();
 }
 
 function handleComplete() {
@@ -58,7 +58,7 @@ function handleComplete() {
 function endTest() {
   stats.duration = Date.now() - stats.duration;
 
-  format.endTest({
+  format.printEndTest({
     numTests: stats.numTests,
     numPassed: stats.numPassed,
     numFailed: stats.numFailed,

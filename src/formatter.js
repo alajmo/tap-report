@@ -2,63 +2,73 @@ const figures = require('figures');
 const chalk = require('chalk');
 const prettyMs = require('pretty-ms');
 const jsondiffpatch = require('jsondiffpatch');
-const fs = require('fs');
+const { println, getLinesFromFile } = require('./util.js');
 
 module.exports = {
-  version,
-  successAssert,
-  failedAssert,
-  formatExtra,
-  startTest,
-  endTest
+  printTapVersion,
+  printSuccessfulAssert,
+  printFailedAssert,
+  printExtra,
+  printStartTest,
+  printEndTest
 };
 
 const CHAR_TICK = figures.tick;
 const CHAR_CROSS = figures.cross;
-const INDENT = ' ';
-const NUM_LINES = 2;
+const NUM_SURROUNDING_LINES = 1;
 
 const OPERATORS = {
   equal: 'equal',
   deepEqual: 'deepEqual'
 };
 
-function startTest() {
-  process.stdout.write(chalk.bold('# Tests\n\n'));
+function printStartTest() {
+  println(chalk.bold('# Tests\n'));
 }
 
-function version(version) {
-  process.stdout.write(chalk.bold(`TAP version ${version}\n\n`));
+function printEndTest({ numTests, numPassed, numFailed, duration } = {}) {
+  const numFailedColorized = numFailed > 0 ? chalk.red(numFailed) : numFailed;
+
+  println(chalk.bold('\n# Summary\n'));
+  println(`Total: ${numTests}`);
+  println(`Passed: ${chalk.green(numPassed)}`);
+
+  if (numFailed === 0) {
+    println(chalk.bgGreen.black('\n All tests passed! \n'));
+    println(`Duration: ${prettyMs(duration)}`);
+  } else {
+    println(`Failed: ${numFailedColorized}`);
+    println(`Duration: ${prettyMs(duration)}`);
+    println(
+      chalk.bgRed.black(`\n ${numFailed} out of ${numTests} tests failed!`)
+    );
+  }
 }
 
-function successAssert({ id, name }) {
+function printTapVersion(version) {
+  println(chalk.bold(`TAP version ${version}\n`));
+}
+
+function printSuccessfulAssert({ id, name }) {
   const odd = parseInt(id) % 2;
   const nameColorized = odd ? `${name}` : chalk.dim(`${name}`);
-  process.stdout.write(`${chalk.green(CHAR_TICK)}  ${id} - ${nameColorized}\n`);
+  println(`${chalk.green(CHAR_TICK)}  ${id} - ${nameColorized}`);
 }
 
-function formatExtra(extra) {
-  process.stdout.write(chalk.red(`extra: ${extra}`));
-}
-
-function failedAssert({ id, name, diag = {} }) {
+function printFailedAssert({ id, name, diag = {} }) {
   const odd = parseInt(id) % 2;
 
   // Message
   const nameColorized = odd ? `${name}` : chalk.dim(`${name}`);
-  process.stdout.write(`${chalk.red(CHAR_CROSS)}  ${id} - ${nameColorized}\n`);
+  println(`${chalk.red(CHAR_CROSS)}  ${id} - ${nameColorized}\n`);
 
-  println(chalk.bold('Overview'), 4);
+  println(chalk.bold('# Overview'), 4);
 
   // Details
   if (diag.operator === OPERATORS.equal) {
-    process.stdout.write(`    operator: ${diag.operator}\n`);
-    process.stdout.write(
-      `    expected: ${chalk.bgGreen.black(` ${diag.expected} `)}\n`
-    );
-    process.stdout.write(
-      `    found: ${chalk.bgRed.black(` ${diag.actual} `)}\n`
-    );
+    println(`operator: ${diag.operator}`, 4);
+    println(`expected: ${chalk.bgGreen.black(` ${diag.expected} `)}`, 4);
+    println(`found: ${chalk.bgRed.black(` ${diag.actual} `)}`, 4);
     printLocation(diag);
   } else if (diag.operator === OPERATORS.deepEqual) {
     const expected = diag.expected
@@ -68,13 +78,9 @@ function failedAssert({ id, name, diag = {} }) {
       .replace(/([a-z]*):/g, '"$1":')
       .replace(/'/g, '"');
 
-    process.stdout.write(`    operator: ${diag.operator}\n`);
-    process.stdout.write(
-      `    expected: ${chalk.bgGreen.black(` ${diag.expected} `)}\n`
-    );
-    process.stdout.write(
-      `    found: ${chalk.bgRed.black(` ${diag.actual} `)}\n`
-    );
+    println(`operator: ${diag.operator}\n`, 4);
+    println(`expected: ${chalk.bgGreen.black(` ${diag.expected} `)}\n`, 4);
+    println(`found: ${chalk.bgRed.black(` ${diag.actual} `)}\n`, 4);
 
     const delta = jsondiffpatch.diff(JSON.parse(actual), JSON.parse(expected));
     const output = jsondiffpatch.formatters.console.format(delta);
@@ -83,58 +89,25 @@ function failedAssert({ id, name, diag = {} }) {
     println(output, 4);
     printLocation(diag);
   }
-  console.log();
+  println();
 }
 
 function printLocation(diag) {
-  println(chalk.bold('\nLocation'), 4);
+  println(chalk.bold('\n# Location'), 4);
   const fileAndLine = diag.at.match(/\((.*)\)/)[1];
   const file = fileAndLine.match(/[^:]*/)[0];
-  const line = diag.at.match(/:(\d+):/)[1];
+  const lineNum = parseInt(diag.at.match(/:(\d+):/)[1]);
 
   println(`${chalk.dim(fileAndLine)}\n`, 4);
-  const lines = readLines(file, parseInt(line));
-  println(chalk.dim(lines), 4);
-}
+  const lines = getLinesFromFile(file, lineNum, NUM_SURROUNDING_LINES);
 
-function readLines(filePath, lineNum) {
-  return fs
-    .readFileSync(filePath, 'utf-8')
-    .split('\n')
-    .map((line, i) => `${i + 1}: ${line}`)
-    .filter(
-      (line, i) => i + 1 > lineNum - NUM_LINES && i + 1 < lineNum + NUM_LINES
-    )
-    .join('\n');
-}
-
-function endTest({ numTests, numPassed, numFailed, duration } = {}) {
-  const numFailedColorized = numFailed > 0 ? chalk.red(numFailed) : numFailed;
-
-  process.stdout.write(chalk.bold('\n# Summary\n\n'));
-  process.stdout.write(`Total: ${numTests}\n`);
-  process.stdout.write(`Passed: ${chalk.green(numPassed)}\n`);
-
-  if (numFailed === 0) {
-    process.stdout.write(chalk.bgGreen.black('\n All tests passed! \n'));
-    process.stdout.write(`\nDuration: ${prettyMs(duration)}\n`);
-  } else {
-    process.stdout.write(`Failed: ${numFailedColorized}\n`);
-    process.stdout.write(`\nDuration: ${prettyMs(duration)}\n`);
-    process.stdout.write(
-      chalk.bgRed.black(`\n ${numFailed} out of ${numTests} tests failed! \n`)
-    );
-  }
-}
-
-function println(input = '', indentLevel = 0) {
-  let indent = '';
-
-  for (let i = 0; i < indentLevel; ++i) {
-    indent += INDENT;
-  }
-
-  input.split('\n').forEach(line => {
-    process.stdout.write(`${indent}${line}\n`);
+  lines.map(elem => {
+    lineNum === elem.lineNum
+      ? println(elem.line, 4)
+      : println(chalk.dim(elem.line), 4);
   });
+}
+
+function printExtra(extra) {
+  println(chalk.red(`extra: ${extra}`));
 }
