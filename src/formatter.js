@@ -8,10 +8,7 @@ module.exports = {
   version,
   successAssert,
   failedAssert,
-  formatComment,
-  formatChild,
   formatExtra,
-  formatComplete,
   startTest,
   endTest
 };
@@ -34,12 +31,19 @@ function version(version) {
   process.stdout.write(chalk.bold(`TAP version ${version}\n\n`));
 }
 
-function successAssert({ id, name, odd }) {
+function successAssert({ id, name }) {
+  const odd = parseInt(id) % 2;
   const nameColorized = odd ? `${name}` : chalk.dim(`${name}`);
   process.stdout.write(`${chalk.green(CHAR_TICK)}  ${id} - ${nameColorized}\n`);
 }
 
-function failedAssert({ id, name, diag = {}, odd }) {
+function formatExtra(extra) {
+  process.stdout.write(chalk.red(`extra: ${extra}`));
+}
+
+function failedAssert({ id, name, diag = {} }) {
+  const odd = parseInt(id) % 2;
+
   // Message
   const nameColorized = odd ? `${name}` : chalk.dim(`${name}`);
   process.stdout.write(`${chalk.red(CHAR_CROSS)}  ${id} - ${nameColorized}\n`);
@@ -134,10 +138,3 @@ function println(input = '', indentLevel = 0) {
     process.stdout.write(`${indent}${line}\n`);
   });
 }
-
-function formatComment() {}
-function formatChild() {}
-function formatExtra() {}
-function formatComplete() {}
-
-// const startedAt = Date.now();

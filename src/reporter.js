@@ -1,9 +1,7 @@
 const Parser = require('tap-parser');
-const chalk = require('chalk');
 const { Duplex } = require('stream');
 const format = require('./formatter.js');
 
-let odd = true;
 const stats = {
   numTests: 0,
   numPassed: 0,
@@ -21,9 +19,7 @@ function reporter() {
 
   parser.on('version', handleVersion);
   parser.on('assert', handleAssert);
-  parser.on('comment', handleComment);
   parser.on('complete', handleComplete);
-  parser.on('bailout', handleBailout);
   parser.on('extra', handleExtra); // Anything not covered by tap-parser
 
   return duplex;
@@ -39,30 +35,20 @@ function handleVersion(version) {
   startTest(version);
 }
 
-function handleBailout(reason) {
-  console.log('bailout');
-  console.log(reason);
-}
-
 function handleAssert(assert) {
   if (assert.ok) {
     stats.numPassed += 1;
-    format.successAssert({ ...assert, duration: stats.duration, odd });
+    format.successAssert({ ...assert, duration: stats.duration });
   } else {
     stats.numFailed += 1;
-    format.failedAssert({ ...assert, duration: stats.duration, odd });
+    format.failedAssert({ ...assert, duration: stats.duration });
   }
 
   stats.numTests += 1;
-  odd = !odd;
-}
-
-function handleComment(comment) {
-  // console.log(chalk.yellow(`comment: ${comment}`));
 }
 
 function handleExtra(extra) {
-  console.log(chalk.red(`extra: ${extra}`));
+  format.formatExtra();
 }
 
 function handleComplete() {
