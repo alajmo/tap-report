@@ -7,7 +7,7 @@ const handleTapStream = require('../src/index.js');
 
 program
   .version(pkg.version)
-  .description('tap reporter')
+  .description('A tap (test anything protocol) consumer that provides user friendly and informative tap output')
   .on('--help', () => {
     console.log(`
   Examples:
