@@ -9,8 +9,8 @@ const jsDiff = require('diff');
 
 const TEST_DIR = path.join(__dirname, 'tests');
 const TAP_REPORT_BIN = path.resolve(__dirname, '../bin/tap-report');
-const TAP_OUTPUT_DIR = path.join(__dirname, 'data', 'tap-output');
-const TAP_REPORT_OUTPUT_DIR = path.join(__dirname, 'data', 'tap-report-output');
+const TAP_OUTPUT_DIR = path.join(__dirname, 'snapshots', 'tap-output');
+const TAP_REPORT_OUTPUT_DIR = path.join(__dirname, 'snapshots', 'tap-report-output');
 const TEST_PATHS = [
   'tape-output-1.js',
   'tape-output-2.js',
