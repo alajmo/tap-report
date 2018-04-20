@@ -8,7 +8,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "node test/index.js run-tests",
+    "test": "node test/index.js run-tests | ./bin/tap-report",
     "generate-test-data": "node test/index.js generate-test-data",
     "dev": "nodemon --quiet --exec \"clear && node test/tape-output.js | ./bin/tap-report \"",
     "lint": "huel lint --src src",
