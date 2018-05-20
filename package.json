@@ -2,7 +2,7 @@
   "name": "tap-report",
   "version": "0.1.0-alpha.6",
   "description": "A tap reporter",
-  "main": "./bin/tap-report",
+  "main": "bin/tap-report",
   "directories": {
     "src": "src",
     "test": "test"
