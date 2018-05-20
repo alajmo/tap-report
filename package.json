@@ -1,15 +1,9 @@
 {
   "name": "tap-report",
-  "version": "0.1.0-alpha.7",
+  "version": "0.1.0-alpha.8",
   "description": "A tap reporter",
+  "bin": "bin/tap-report",
   "main": "bin/tap-report",
-  "files": [
-    "bin/tap-report",
-    "README.md"
-  ],
-  "directories": {
-    "src": "src"
-  },
   "scripts": {
     "test": "node test/index.js run-tests | ./bin/tap-report",
     "generate-test-data": "node test/index.js generate-test-data",
