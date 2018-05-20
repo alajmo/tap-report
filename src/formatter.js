@@ -99,21 +99,12 @@ function printFailedAssert({ id, name, diag = {} }) {
 
   // Details
   println(chalk.bold('\n# Error'), 4);
-  const { found, wanted } = getComparisonValues(diag);
-  printDifference(found, wanted);
+  printDifference(({ found, wanted } = diag));
   printFileErrorLines(diag.at);
   println();
 }
 
-function getComparisonValues(diag) {
-  if (diag.hasOwnProperty('actual')) {
-    return { found: diag.actual, wanted: diag.expected };
-  } else {
-    return ({ found, wanted } = diag);
-  }
-}
-
-function printDifference(found, wanted) {
+function printDifference({ found, wanted }) {
   const foundParsed = parseValue(found);
   const wantedParsed = parseValue(wanted);
 
@@ -126,9 +117,7 @@ function parseValue(value) {
   let valueParsed;
   if (['number', 'boolean'].includes(typeof value)) {
     eval('valueParsed=' + value);
-  } else if (['object'].includes(typeof value)) {
-    eval('valueParsed=' + JSON.stringify(value));
-  } else if (['string'].includes(typeof value)) {
+  } else if (['object', 'string'].includes(typeof value)) {
     eval('valueParsed=' + JSON.stringify(value));
   }
   return valueParsed;
