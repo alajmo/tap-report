@@ -22,7 +22,6 @@ function reporter() {
   parser.on('version', handleVersion);
   parser.on('assert', handleAssert);
   parser.on('complete', handleComplete);
-  parser.on('extra', handleExtra);
 
   return duplex;
 }
@@ -53,10 +52,6 @@ function handleAssert(assert) {
   }
 
   stats.numTests += 1;
-}
-
-function handleExtra(extra) {
-  format.printExtra();
 }
 
 function handleComplete(result) {

@@ -37,4 +37,4 @@ not ok 5 - deep equal 2
 
 1..5
 # failed 2 of 5 tests
-# time=34.995ms
+# time=23.65ms

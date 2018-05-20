@@ -5,4 +5,4 @@ ok 3 - optional message 2
 ok 4 - deep equal 2
 ok 5 - deep equal 2
 1..5
-# time=7.639ms
+# time=9.399ms

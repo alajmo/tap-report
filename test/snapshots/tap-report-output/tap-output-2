@@ -8,7 +8,7 @@ TAP version 13
     false => true
     
     # File
-    /home/samir/Projects/programming/tap-report/test/tests/tap-output-2.js:4:5
+    test/tests/tap-output-2.js:4:5
     
     3: 
     4: tap.equal(1 !== 1, true, 'optional message 0');
@@ -20,7 +20,7 @@ TAP version 13
     2 => 3
     
     # File
-    /home/samir/Projects/programming/tap-report/test/tests/tap-output-2.js:5:5
+    test/tests/tap-output-2.js:5:5
     
     4: tap.equal(1 !== 1, true, 'optional message 0');
     5: tap.equal(2, 3, 'optional message 1');
@@ -32,7 +32,7 @@ TAP version 13
     false => true
     
     # File
-    /home/samir/Projects/programming/tap-report/test/tests/tap-output-2.js:7:5
+    test/tests/tap-output-2.js:7:5
     
     6: 
     7: tap.equal(1 === 2, true, 'optional message 2');
@@ -46,7 +46,7 @@ TAP version 13
     }
     
     # File
-    /home/samir/Projects/programming/tap-report/test/tests/tap-output-2.js:9:5
+    test/tests/tap-output-2.js:9:5
     
     8: 
     9: tap.deepEqual({ hello: 'y friend' }, { hello: 'my friend' }, 'deep equal 2');
@@ -65,7 +65,7 @@ TAP version 13
     }
     
     # File
-    /home/samir/Projects/programming/tap-report/test/tests/tap-output-2.js:11:5
+    test/tests/tap-output-2.js:11:5
     
     10: 
     11: tap.deepEqual(
@@ -78,6 +78,6 @@ Passed: 0
 Failed: 5
 Total: 5
 
-Duration: 33ms
+Duration: 32ms
 
  5 out of 5 tests failed!

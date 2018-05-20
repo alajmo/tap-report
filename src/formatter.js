@@ -11,7 +11,6 @@ module.exports = {
   printSkippedAssert,
   printTodoAssert,
   printFailedAssert,
-  printExtra,
   printStartTest,
   printEndTest
 };
@@ -142,8 +141,4 @@ function printFileErrorLines(at) {
       ? println(elem.line, 4)
       : println(chalk.dim(elem.line), 4);
   });
-}
-
-function printExtra(extra) {
-  println(chalk.red(`extra: ${extra}`));
 }

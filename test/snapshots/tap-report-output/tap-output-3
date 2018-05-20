@@ -9,7 +9,7 @@ TAP version 13
     "a" => 2
     
     # File
-    /home/samir/Projects/programming/tap-report/test/tests/tap-output-3.js:5:5
+    test/tests/tap-output-3.js:5:5
     
     4: tap.equal(1 === 1, true, 'optional message 0');
     5: tap.equal('a', 2, 'optional message 1');
@@ -30,7 +30,7 @@ TAP version 13
     }
     
     # File
-    /home/samir/Projects/programming/tap-report/test/tests/tap-output-3.js:11:5
+    test/tests/tap-output-3.js:11:5
     
     10: 
     11: tap.deepEqual(
@@ -43,6 +43,6 @@ Passed: 3
 Failed: 2
 Total: 5
 
-Duration: 27ms
+Duration: 64ms
 
  2 out of 5 tests failed!
