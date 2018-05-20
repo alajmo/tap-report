@@ -9,7 +9,7 @@ A tap (test anything protocol) consumer that provides user friendly and informat
 * Colors, colors, colors
 * Helpful difference
 
-Built on [tap-parser](https://github.com/tapjs/tap-parser) and tested with [node-tap](https://github.com/tapjs/node-tap).
+Built on [tap-parser](https://github.com/tapjs/tap-parser) and tested to work with [node-tap](https://github.com/tapjs/node-tap).
 
 ## Motivation
 
@@ -30,7 +30,7 @@ Options:
 Examples:
 
   Build project
-  $ <tap output> | tap-view
+  $ <tap output> | tap-report
 ```
 
 ## Inspiration
