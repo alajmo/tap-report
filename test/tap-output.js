@@ -34,3 +34,12 @@ tap.equal(1, false, 'failing test');
 tap.equal(true, false, 'optional message 1');
 tap.deepEqual(foo, bar, 'failing deep equal');
 tap.deepEqual({ a: 1 }, { a: 2 }, 'failing deep equal');
+
+// Promises
+// setTimeout(() => {
+//   tap.equal(true, false, 'optional message 1');
+// }, 10000);
+
+// setTimeout(() => {
+//   tap.equal(true, true, 'optional message 1');
+// }, 10000);

@@ -75,17 +75,23 @@ function printSuccessfulAssert({ id, name }) {
 function printSkippedAssert({ id, name }) {
   const odd = parseInt(id) % 2;
   const nameParam = odd ? `${name}` : chalk.dim(`${name}`);
+  const skipParam = odd ? '(skip)' : chalk.dim('(skip)');
   const idParam = odd ? `${id}` : chalk.dim(`${id}`);
 
-  println(`${chalk.yellow(CHAR_WARNING)}  ${idParam} - ${nameParam} (skip)`);
+  println(
+    `${chalk.yellow(CHAR_WARNING)}  ${idParam} - ${nameParam} ${skipParam}`
+  );
 }
 
 function printTodoAssert({ id, name }) {
   const odd = parseInt(id) % 2;
   const nameParam = odd ? `${name}` : chalk.dim(`${name}`);
+  const todoParam = odd ? '(todo)' : chalk.dim('(todo)');
   const idParam = odd ? `${id}` : chalk.dim(`${id}`);
 
-  println(`${chalk.yellow(CHAR_WARNING)}  ${idParam} - ${nameParam} (todo)`);
+  println(
+    `${chalk.yellow(CHAR_WARNING)}  ${idParam} - ${nameParam} ${todoParam}`
+  );
 }
 
 function printFailedAssert({ id, name, diag = {} }) {
@@ -124,23 +130,11 @@ function parseValue(value) {
 }
 
 function printFileErrorLines(at) {
-  let fileAndLine;
-  let file;
-  let lineNum;
   println(chalk.bold('\n# File'), 4);
-  if (typeof at === 'string') {
-    fileAndLine = at.match(/\((.*)\)/)[1];
-    file = fileAndLine.match(/[^:]*/)[0];
-    lineNum = parseInt(at.match(/:(\d+):/)[1]);
 
-    println(`${chalk.dim(fileAndLine)}\n`, 4);
-  } else if (typeof at === 'object') {
-    file = path.join(process.cwd(), at.file);
-    lineNum = at.line;
-    column = at.column;
+  const { file, line: lineNum, column } = at;
 
-    println(`${chalk.dim(`${file}:${lineNum}:${column}`)}\n`, 4);
-  }
+  println(`${chalk.dim(`${file}:${lineNum}:${column}`)}\n`, 4);
 
   const lines = getLinesFromFile(file, lineNum, NUM_SURROUNDING_LINES);
   lines.map(elem => {
@@ -151,5 +145,5 @@ function printFileErrorLines(at) {
 }
 
 function printExtra(extra) {
-  // println(chalk.red(`extra: ${extra}`));
+  println(chalk.red(`extra: ${extra}`));
 }
