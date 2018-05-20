@@ -10,9 +10,10 @@ TAP version 13
 
 # Summary
 
-Total: 5
 Passed: 5
+Total: 5
+
+Duration: 999ms
 
  All tests passed! 
 
-Duration: 1s

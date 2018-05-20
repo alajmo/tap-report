@@ -1,4 +1,4 @@
-// Mixed pass and fail with tape
+// Mixed pass and fail with tap
 const tap = require('tap');
 
 tap.equal(1 === 1, true, 'optional message 0');

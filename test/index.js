@@ -3,18 +3,19 @@ const child = require('child_process');
 const path = require('path');
 const fs = require('fs');
 const chalk = require('chalk');
-const test = require('tape');
+const tap = require('tap');
 const del = require('del');
 const jsDiff = require('diff');
 
 const TEST_DIR = path.join(__dirname, 'tests');
 const TAP_REPORT_BIN = path.resolve(__dirname, '../bin/tap-report');
 const TAP_OUTPUT_DIR = path.join(__dirname, 'snapshots', 'tap-output');
-const TAP_REPORT_OUTPUT_DIR = path.join(__dirname, 'snapshots', 'tap-report-output');
+const TAP_REPORT_OUTPUT_DIR = path.join(
+  __dirname,
+  'snapshots',
+  'tap-report-output'
+);
 const TEST_PATHS = [
-  'tape-output-1.js',
-  'tape-output-2.js',
-  'tape-output-3.js',
   'tap-output-1.js',
   'tap-output-2.js',
   'tap-output-3.js'
@@ -60,56 +61,46 @@ function generateData({ testPaths, outputDir, command }) {
 }
 
 function runTests(tapDataDir, tapReportDataDir, bin) {
-  test('regression tests', t => {
-    fs.readdirSync(tapDataDir).map(filePath => {
-      // Run tap-report on tap data
-      const actualFilePath = path.join(tapDataDir, filePath);
-      const actualFileContent = child.execSync(
-        `cat ${actualFilePath} | ${bin}`,
-        {
-          encoding: 'utf-8'
-        }
-      );
-
-      // Read previous tap-report datRead previous tap-report data
-      const expectedFileContent = fs.readFileSync(
-        path.join(tapReportDataDir, path.parse(filePath).name),
-        'utf-8'
-      );
-
-      // Find differences
-      const diff = jsDiff.diffTrimmedLines(
-        actualFileContent,
-        expectedFileContent
-      );
-
-      let foundDifference = false;
-      let output = '';
-      diff.forEach(part => {
-        const color = part.added ? 'green' : part.removed ? 'red' : 'grey';
-
-        // Ignore Duration line since it varies from run to run
-        if (
-          (part.added || part.removed) &&
-          !part.value.includes('Duration: ')
-        ) {
-          foundDifference = true;
-        }
-
-        output += part.value[color];
-      });
-
-      if (foundDifference) {
-        process.stdout.write(output);
-      }
-
-      t.equal(
-        foundDifference,
-        false,
-        `file ${chalk.bold(filePath)} passed regression test`
-      );
+  fs.readdirSync(tapDataDir).map(filePath => {
+    // Run tap-report on tap data
+    const actualFilePath = path.join(tapDataDir, filePath);
+    const actualFileContent = child.execSync(`cat ${actualFilePath} | ${bin}`, {
+      encoding: 'utf-8'
     });
 
-    t.end();
+    // Read previous tap-report datRead previous tap-report data
+    const expectedFileContent = fs.readFileSync(
+      path.join(tapReportDataDir, path.parse(filePath).name),
+      'utf-8'
+    );
+
+    // Find differences
+    const diff = jsDiff.diffTrimmedLines(
+      actualFileContent,
+      expectedFileContent
+    );
+
+    let foundDifference = false;
+    let output = '';
+    diff.forEach(part => {
+      const color = part.added ? 'green' : part.removed ? 'red' : 'grey';
+
+      // Ignore Duration line since it varies from run to run
+      if ((part.added || part.removed) && !part.value.includes('Duration: ')) {
+        foundDifference = true;
+      }
+
+      output += part.value[color];
+    });
+
+    if (foundDifference) {
+      process.stdout.write(output);
+    }
+
+    tap.equal(
+      foundDifference,
+      false,
+      `file ${chalk.bold(filePath)} passed regression test`
+    );
   });
 }

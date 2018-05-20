@@ -4,6 +4,8 @@ const format = require('./formatter.js');
 
 const stats = {
   numTests: 0,
+  numSkipped: 0,
+  numTodo: 0,
   numPassed: 0,
   numFailed: 0,
   duration: 0
@@ -20,7 +22,7 @@ function reporter() {
   parser.on('version', handleVersion);
   parser.on('assert', handleAssert);
   parser.on('complete', handleComplete);
-  parser.on('extra', handleExtra); // Anything not covered by tap-parser
+  parser.on('extra', handleExtra);
 
   return duplex;
 }
@@ -36,7 +38,13 @@ function handleVersion(version) {
 }
 
 function handleAssert(assert) {
-  if (assert.ok) {
+  if (assert.skip) {
+    stats.numSkipped += 1;
+    format.printSkippedAssert({ ...assert, duration: stats.duration });
+  } else if (assert.todo) {
+    stats.numTodo += 1;
+    format.printTodoAssert({ ...assert, duration: stats.duration });
+  } else if (assert.ok) {
     stats.numPassed += 1;
     format.printSuccessfulAssert({ ...assert, duration: stats.duration });
   } else {
@@ -51,19 +59,16 @@ function handleExtra(extra) {
   format.printExtra();
 }
 
-function handleComplete() {
+function handleComplete(result) {
   endTest();
 }
 
 function endTest() {
   stats.duration = Date.now() - stats.duration;
 
-  format.printEndTest({
-    numTests: stats.numTests,
-    numPassed: stats.numPassed,
-    numFailed: stats.numFailed,
-    duration: stats.duration
-  });
+  format.printEndTest(
+    ({ duration, numFailed, numPassed, numSkipped, numTests } = stats)
+  );
 }
 
 function getDuplex(writer, reader) {

@@ -9,7 +9,7 @@ A tap (test anything protocol) consumer that provides user friendly and informat
 * Colors, colors, colors
 * Helpful difference
 
-Built on [tap-parser](https://github.com/tapjs/tap-parser) and tested with [node-tap](https://github.com/tapjs/node-tap) and [tape](https://github.com/substack/tape).
+Built on [tap-parser](https://github.com/tapjs/tap-parser) and tested with [node-tap](https://github.com/tapjs/node-tap).
 
 ## Motivation
 
