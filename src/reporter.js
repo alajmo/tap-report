@@ -45,28 +45,24 @@ function handleAssert(assert) {
     stats.numSkipped += 1;
     format.printSkippedAssert({
       ...assert,
-      duration: stats.duration,
       durationPerAssert: stats.durationPerAssert
     });
   } else if (assert.todo) {
     stats.numTodo += 1;
     format.printTodoAssert({
       ...assert,
-      duration: stats.duration,
       durationPerAssert: stats.durationPerAssert
     });
   } else if (assert.ok) {
     stats.numPassed += 1;
     format.printSuccessfulAssert({
       ...assert,
-      duration: stats.duration,
       durationPerAssert: stats.durationPerAssert
     });
   } else {
     stats.numFailed += 1;
     format.printFailedAssert({
       ...assert,
-      duration: stats.duration,
       durationPerAssert: stats.durationPerAssert
     });
   }
