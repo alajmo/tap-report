@@ -86,7 +86,11 @@ function runTests(tapDataDir, tapReportDataDir, bin) {
       const color = part.added ? 'green' : part.removed ? 'red' : 'grey';
 
       // Ignore Duration line since it varies from run to run
-      if ((part.added || part.removed) && !part.value.includes('Duration: ')) {
+      if (
+        (part.added || part.removed) &&
+        !part.value.includes('Duration: ') &&
+        !part.value.includes('ms)')
+      ) {
         foundDifference = true;
       }
 
