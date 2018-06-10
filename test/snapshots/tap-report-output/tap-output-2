@@ -2,7 +2,7 @@ TAP version 13
 
 # Tests
 
-✖  1 - optional message 0 (20ms)
+✖  1 - optional message 0 (10ms)
     
     # Error
     false => true
@@ -52,7 +52,7 @@ TAP version 13
     9: tap.deepEqual({ hello: 'y friend' }, { hello: 'my friend' }, 'deep equal 2');
     10: 
 
-✖  5 - deep equal 2 (1ms)
+✖  5 - deep equal 2 (0ms)
     
     # Error
     {
@@ -78,6 +78,6 @@ Passed: 0
 Failed: 5
 Total: 5
 
-Duration: 36ms
+Duration: 29ms
 
  5 out of 5 tests failed!

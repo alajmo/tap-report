@@ -1,0 +1,30 @@
+TAP version 13
+
+# Tests
+
+✔  1 - foo (10ms)
+✔  2 - bar (22ms)
+✖  3 - lala land (20ms)
+    
+    # Error
+    1 => 2
+    
+    # File
+    test/tests/tap-output-4.js:8:5
+    
+    7: tap.test('subtests', t => {
+    8:   t.equal(1, 2, 'lala land');
+    9:   t.equal(2, 2, 'olololo');
+
+✔  4 - olololo (1ms)
+✔  5 - bar (0ms)
+
+# Summary
+
+Passed: 4
+Failed: 1
+Total: 5
+
+Duration: 69ms
+
+ 1 out of 5 tests failed!

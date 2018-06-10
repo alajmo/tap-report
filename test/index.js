@@ -18,7 +18,8 @@ const TAP_REPORT_OUTPUT_DIR = path.join(
 const TEST_PATHS = [
   'tap-output-1.js',
   'tap-output-2.js',
-  'tap-output-3.js'
+  'tap-output-3.js',
+  'tap-output-4.js'
 ].map(testPath => path.join(TEST_DIR, testPath));
 
 main();

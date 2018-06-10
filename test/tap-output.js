@@ -1,4 +1,6 @@
 const tap = require('tap');
+// const tapReport = require('../src/reporter.js');
+// tap.pipe(tapReport());
 
 const foo = {
   glossary: {
@@ -16,28 +18,31 @@ const bar = {
 };
 
 // Skipped
-tap.equal(1 === 1, true, 'skip message', { skip: true });
+// tap.equal(1 === 1, true, 'skip message', { skip: true });
 
 // Todo
-tap.equal(1 === 1, true, 'todo message', { todo: true });
+// tap.equal(1 === 1, true, 'todo message', { todo: true });
 
 // Passing
 tap.equal(1 === 1, true, 'foo');
-tap.equal('foo', 'bar', 'bar');
+tap.equal('foo', 'foo', 'bar');
 
-// tap.test('get thing', t => {
-//   t.equal(1, 2);
-// });
+tap.test('get thing', t => {
+  t.equal(1, 2, 'lala land');
+  t.equal(2, 2, 'olololo');
+  t.end();
+});
+tap.equal('foo', 'foo', 'bar');
 
 // Failing
-tap.equal(1 === 2, true, 'optional message 1');
-tap.equal(1, 2, 'failing test');
-tap.equal('1', 1, 'failing test');
-tap.equal('hello my friend', 'hello mi friend', 'failing string equal');
-tap.equal(1, false, 'failing test');
-tap.equal(true, false, 'optional message 1');
-tap.deepEqual(foo, bar, 'failing deep equal');
-tap.deepEqual({ a: 1 }, { a: 2 }, 'failing deep equal');
+// tap.equal(1 === 2, true, 'optional message 1');
+// tap.equal(1, 2, 'failing test');
+// tap.equal('1', 1, 'failing test');
+// tap.equal('hello my friend', 'hello mi friend', 'failing string equal');
+// tap.equal(1, false, 'failing test');
+// tap.equal(true, false, 'optional message 1');
+// tap.deepEqual(foo, bar, 'failing deep equal');
+// tap.deepEqual({ a: 1 }, { a: 2 }, 'failing deep equal');
 
 // Promises
 // setTimeout(() => {

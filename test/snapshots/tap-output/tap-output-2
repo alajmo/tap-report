@@ -80,4 +80,4 @@ not ok 5 - deep equal 2
 
 1..5
 # failed 5 of 5 tests
-# time=21.759ms
+# time=36.752ms
