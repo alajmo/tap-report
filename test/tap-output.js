@@ -22,8 +22,12 @@ tap.equal(1 === 1, true, 'skip message', { skip: true });
 tap.equal(1 === 1, true, 'todo message', { todo: true });
 
 // Passing
-tap.equal(1 === 1, true, 'optional message 0');
-tap.equal('foo', 'foo', 'optional message 0');
+tap.equal(1 === 1, true, 'foo');
+tap.equal('foo', 'bar', 'bar');
+
+// tap.test('get thing', t => {
+//   t.equal(1, 2);
+// });
 
 // Failing
 tap.equal(1 === 2, true, 'optional message 1');
@@ -37,7 +41,7 @@ tap.deepEqual({ a: 1 }, { a: 2 }, 'failing deep equal');
 
 // Promises
 // setTimeout(() => {
-//   tap.equal(true, false, 'optional message 1');
+//   tap.equal(true, false, 'long polling');
 // }, 10000);
 
 // setTimeout(() => {

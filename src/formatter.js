@@ -63,44 +63,56 @@ function printTapVersion(version) {
   println(chalk.bold(`TAP version ${version}\n`));
 }
 
-function printSuccessfulAssert({ id, name }) {
+function printSuccessfulAssert({ id, name, durationPerAssert }) {
   const odd = parseInt(id) % 2;
   const nameParam = odd ? `${name}` : chalk.dim(`${name}`);
   const idParam = odd ? `${id}` : chalk.dim(`${id}`);
 
-  println(`${chalk.green(CHAR_TICK)}  ${idParam} - ${nameParam}`);
+  println(
+    `${chalk.green(CHAR_TICK)}  ${idParam} - ${nameParam} (${prettyMs(
+      durationPerAssert
+    )})`
+  );
 }
 
-function printSkippedAssert({ id, name }) {
+function printSkippedAssert({ id, name, durationPerAssert }) {
   const odd = parseInt(id) % 2;
   const nameParam = odd ? `${name}` : chalk.dim(`${name}`);
   const skipParam = odd ? '(skip)' : chalk.dim('(skip)');
   const idParam = odd ? `${id}` : chalk.dim(`${id}`);
 
   println(
-    `${chalk.yellow(CHAR_WARNING)}  ${idParam} - ${nameParam} ${skipParam}`
+    `${chalk.yellow(
+      CHAR_WARNING
+    )}  ${idParam} - ${nameParam} ${skipParam} (${prettyMs(durationPerAssert)})`
   );
 }
 
-function printTodoAssert({ id, name }) {
+function printTodoAssert({ id, name, durationPerAssert }) {
   const odd = parseInt(id) % 2;
   const nameParam = odd ? `${name}` : chalk.dim(`${name}`);
   const todoParam = odd ? '(todo)' : chalk.dim('(todo)');
   const idParam = odd ? `${id}` : chalk.dim(`${id}`);
 
   println(
-    `${chalk.yellow(CHAR_WARNING)}  ${idParam} - ${nameParam} ${todoParam}`
+    `${chalk.yellow(
+      CHAR_WARNING
+    )}  ${idParam} - ${nameParam} ${todoParam} (${prettyMs(durationPerAssert)})`
   );
 }
 
-function printFailedAssert({ id, name, diag = {} }) {
+function printFailedAssert({ id, name, durationPerAssert, diag = {} }) {
   const odd = parseInt(id) % 2;
 
   // Message
   const nameParam = odd ? `${name}` : chalk.dim(`${name}`);
   const idParam = odd ? `${id}` : chalk.dim(`${id}`);
 
-  println(`${chalk.red(CHAR_CROSS)}  ${idParam} - ${nameParam}`);
+  println(
+    `${chalk.red(CHAR_CROSS)}  ${idParam} - ${nameParam} (${prettyMs(
+      durationPerAssert
+    )})`
+  );
 
   // Details
   println(chalk.bold('\n# Error'), 4);
