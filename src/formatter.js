@@ -1,5 +1,4 @@
 const figures = require('figures');
-const path = require('path');
 const chalk = require('chalk');
 const prettyMs = require('pretty-ms');
 const jsondiffpatch = require('jsondiffpatch');
@@ -114,6 +113,10 @@ function printFailedAssert({ id, name, durationPerAssert, diag = {} }) {
     )})`
   );
 
+  if (Object.keys(diag).length === 0) {
+    return;
+  }
+
   // Details
   println(chalk.bold('\n# Error'), 4);
   printDifference(({ found, wanted } = diag));
@@ -141,6 +144,9 @@ function parseValue(value) {
 }
 
 function printFileErrorLines(at) {
+  if (!at) {
+    return;
+  }
   println(chalk.bold('\n# File'), 4);
 
   const { file, line: lineNum, column } = at;
