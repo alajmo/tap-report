@@ -1,5 +1,4 @@
 const Parser = require('tap-parser');
-const { Duplex } = require('stream');
 const format = require('./formatter.js');
 
 const stats = {
@@ -16,15 +15,12 @@ module.exports = reporter;
 
 function reporter() {
   const parser = new Parser({ strict: true });
-  const duplex = getDuplex(parser, () => {});
-
-  duplex.on('finish', () => parser.end());
 
   parser.on('version', handleVersion);
   parser.on('assert', handleAssert);
-  parser.on('complete', handleComplete);
+  parser.on('complete', () => handleComplete(parser));
 
-  return duplex;
+  return parser;
 }
 
 function startTest(version) {
@@ -71,26 +67,12 @@ function handleAssert(assert) {
   stats.numTests += 1;
 }
 
-function handleComplete() {
-  endTest();
-}
-
-function endTest() {
+function handleComplete(parser) {
   stats.duration = Date.now() - stats.duration;
 
   format.printEndTest(
     ({ duration, numFailed, numPassed, numSkipped, numTests } = stats)
   );
-}
 
-function getDuplex(writer, reader) {
-  return Duplex({
-    read() {
-      reader();
-    },
-    write(chunk, encoding, cb) {
-      writer.write(chunk);
-      cb();
-    }
-  });
+  parser.end();
 }
