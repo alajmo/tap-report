@@ -11,6 +11,7 @@ module.exports = {
   printTodoAssert,
   printFailedAssert,
   printStartTest,
+  printBailout,
   printEndTest
 };
 
@@ -122,6 +123,10 @@ function printFailedAssert({ id, name, durationPerAssert, diag = {} }) {
   printDifference(({ found, wanted } = diag));
   printFileErrorLines(diag.at);
   println();
+}
+
+function printBailout() {
+  chalk.red(`Bailed out!`);
 }
 
 function printDifference({ found, wanted }) {
