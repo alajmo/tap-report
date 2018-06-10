@@ -20,6 +20,9 @@ function reporter() {
   parser.on('assert', handleAssert);
   parser.on('bailout', handleBailout);
   parser.on('complete', () => handleComplete(parser));
+  parser.on('child', childParser => {
+    childParser.on('assert', handleAssert);
+  });
 
   process.on('exit', () => handleExit(parser));
 
@@ -42,32 +45,43 @@ function handleAssert(assert) {
 
   if (assert.skip) {
     stats.numSkipped += 1;
+    stats.numTests += 1;
     format.printSkippedAssert({
       ...assert,
+      id: stats.numTests,
       durationPerAssert: stats.durationPerAssert
     });
+    stats.durationPerAssert = Date.now();
   } else if (assert.todo) {
     stats.numTodo += 1;
+    stats.numTests += 1;
     format.printTodoAssert({
       ...assert,
+      id: stats.numTests,
       durationPerAssert: stats.durationPerAssert
     });
+    stats.durationPerAssert = Date.now();
   } else if (assert.ok) {
     stats.numPassed += 1;
+    stats.numTests += 1;
     format.printSuccessfulAssert({
       ...assert,
+      id: stats.numTests,
       durationPerAssert: stats.durationPerAssert
     });
+    stats.durationPerAssert = Date.now();
   } else {
-    stats.numFailed += 1;
-    format.printFailedAssert({
-      ...assert,
-      durationPerAssert: stats.durationPerAssert
-    });
+    if (assert.diag) {
+      stats.numFailed += 1;
+      stats.numTests += 1;
+      format.printFailedAssert({
+        ...assert,
+        id: stats.numTests,
+        durationPerAssert: stats.durationPerAssert
+      });
+    }
+    stats.durationPerAssert = Date.now();
   }
-
-  stats.durationPerAssert = Date.now();
-  stats.numTests += 1;
 }
 
 function handleBailout() {
