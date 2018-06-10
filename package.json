@@ -1,6 +1,6 @@
 {
   "name": "tap-report",
-  "version": "0.1.0-alpha.8",
+  "version": "0.1.0-alpha.9",
   "description": "A tap reporter",
   "bin": "bin/tap-report",
   "main": "bin/tap-report",
