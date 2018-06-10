@@ -21,6 +21,8 @@ function reporter() {
   parser.on('bailout', handleBailout);
   parser.on('complete', () => handleComplete(parser));
 
+  process.on('exit', () => handleExit(parser));
+
   return parser;
 }
 
@@ -68,16 +70,18 @@ function handleAssert(assert) {
   stats.numTests += 1;
 }
 
+function handleBailout() {
+  format.printBailout();
+}
+
 function handleComplete(parser) {
   stats.duration = Date.now() - stats.duration;
 
   format.printEndTest(
     ({ duration, numFailed, numPassed, numSkipped, numTests } = stats)
   );
-
-  parser.end();
 }
 
-function handleBailout() {
-  format.printBailout();
+function handleExit(parser) {
+  parser.end();
 }
