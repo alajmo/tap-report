@@ -1,9 +1,9 @@
 {
   "name": "tap-report",
-  "version": "0.1.0-alpha.9",
+  "version": "0.1.0-alpha.11",
   "description": "A tap reporter",
   "bin": "bin/tap-report",
-  "main": "bin/tap-report",
+  "main": "src/reporter.js",
   "scripts": {
     "test": "node test/index.js run-tests | ./bin/tap-report",
     "generate-test-data": "node test/index.js generate-test-data",
