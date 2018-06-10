@@ -2,8 +2,8 @@ TAP version 13
 
 # Tests
 
-✔  1 - optional message 0
-✖  2 - optional message 1
+✔  1 - optional message 0 (11ms)
+✖  2 - optional message 1 (14ms)
     
     # Error
     "a" => 2
@@ -15,9 +15,9 @@ TAP version 13
     5: tap.equal('a', 2, 'optional message 1');
     6: 
 
-✔  3 - optional message 2
-✔  4 - deep equal 2
-✖  5 - deep equal 2
+✔  3 - optional message 2 (2ms)
+✔  4 - deep equal 2 (2ms)
+✖  5 - deep equal 2 (5ms)
     
     # Error
     {
@@ -43,6 +43,6 @@ Passed: 3
 Failed: 2
 Total: 5
 
-Duration: 64ms
+Duration: 53ms
 
  2 out of 5 tests failed!
