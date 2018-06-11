@@ -2,8 +2,8 @@ TAP version 13
 
 # Tests
 
-✔  1 - optional message 0 (21ms)
-✖  2 - optional message 1 (10ms)
+✔  1 - optional message 0 (789ms)
+✖  2 - optional message 1 (30ms)
     
     # Error
     "a" => 2
@@ -16,7 +16,7 @@ TAP version 13
     6: 
 
 ✔  3 - optional message 2 (0ms)
-✔  4 - deep equal 2 (1ms)
+✔  4 - deep equal 2 (0ms)
 ✖  5 - deep equal 2 (1ms)
     
     # Error
@@ -36,13 +36,18 @@ TAP version 13
     11: tap.deepEqual(
     12:   { hello: { world: 'my friend' } },
 
+✖  6 - /home/samir/Projects/programming/tap-report/test/tests/tap-output-3.js (33ms)
+    
+    # Error
+    
+
 
 # Summary
 
 Passed: 3
-Failed: 2
-Total: 5
+Failed: 3
+Total: 6
 
-Duration: 48ms
+Duration: 871ms
 
- 2 out of 5 tests failed!
+3 out of 6 tests failed!

@@ -16,11 +16,15 @@ const TAP_REPORT_OUTPUT_DIR = path.join(
   'tap-report-output'
 );
 const TEST_PATHS = [
-  'tap-output-1.js',
-  'tap-output-2.js',
-  'tap-output-3.js',
-  'tap-output-4.js'
-].map(testPath => path.join(TEST_DIR, testPath));
+  { file: 'tap-output-1.js' },
+  { file: 'tap-output-2.js' },
+  { file: 'tap-output-3.js' },
+  { file: 'tap-output-4.js' },
+  { file: 'tap-output-5.js', options: '--bail' }
+].map(({ file, options = '' }) => ({
+  file: path.join(TEST_DIR, file),
+  options
+}));
 
 main();
 
@@ -31,18 +35,18 @@ function main() {
       runTests(TAP_OUTPUT_DIR, TAP_REPORT_OUTPUT_DIR, TAP_REPORT_BIN);
       break;
     case 'generate-test-data':
-      // tap data
-      generateData({
-        testPaths: TEST_PATHS,
-        outputDir: TAP_REPORT_OUTPUT_DIR,
-        command: testPath => `node ${testPath} | ${TAP_REPORT_BIN}`
-      });
-
       // tap-report data
       generateData({
         testPaths: TEST_PATHS,
+        outputDir: TAP_REPORT_OUTPUT_DIR,
+        command: ({ file, options }) => `tap ${file} ${options} | ${TAP_REPORT_BIN}`
+      });
+
+      // tap data
+      generateData({
+        testPaths: TEST_PATHS,
         outputDir: TAP_OUTPUT_DIR,
-        command: testPath => `node ${testPath}`
+        command: ({ file, options }) => `tap ${file} ${options }`
       });
       break;
     default:
@@ -53,9 +57,9 @@ function main() {
 function generateData({ testPaths, outputDir, command }) {
   del.sync([path.join(outputDir, 'tap-output-*')]);
 
-  testPaths.forEach(testPath => {
-    child.exec(command(testPath), (err, stdout) => {
-      const dataFile = path.join(outputDir, path.parse(testPath).name);
+  testPaths.forEach(({ file, options }) => {
+    child.exec(command({ file, options }), (err, stdout) => {
+      const dataFile = path.join(outputDir, path.parse(file, options).name);
       fs.writeFileSync(dataFile, stdout);
     });
   });

@@ -2,7 +2,7 @@ TAP version 13
 
 # Tests
 
-✖  1 - optional message 0 (10ms)
+✖  1 - optional message 0 (772ms)
     
     # Error
     false => true
@@ -14,7 +14,7 @@ TAP version 13
     4: tap.equal(1 !== 1, true, 'optional message 0');
     5: tap.equal(2, 3, 'optional message 1');
 
-✖  2 - optional message 1 (1ms)
+✖  2 - optional message 1 (18ms)
     
     # Error
     2 => 3
@@ -26,7 +26,7 @@ TAP version 13
     5: tap.equal(2, 3, 'optional message 1');
     6: 
 
-✖  3 - optional message 2 (0ms)
+✖  3 - optional message 2 (18ms)
     
     # Error
     false => true
@@ -38,7 +38,7 @@ TAP version 13
     7: tap.equal(1 === 2, true, 'optional message 2');
     8: 
 
-✖  4 - deep equal 2 (0ms)
+✖  4 - deep equal 2 (29ms)
     
     # Error
     {
@@ -52,7 +52,7 @@ TAP version 13
     9: tap.deepEqual({ hello: 'y friend' }, { hello: 'my friend' }, 'deep equal 2');
     10: 
 
-✖  5 - deep equal 2 (0ms)
+✖  5 - deep equal 2 (10ms)
     
     # Error
     {
@@ -71,13 +71,18 @@ TAP version 13
     11: tap.deepEqual(
     12:   { ello: { world: 'my friend' } },
 
+✖  6 - /home/samir/Projects/programming/tap-report/test/tests/tap-output-2.js (37ms)
+    
+    # Error
+    
+
 
 # Summary
 
 Passed: 0
-Failed: 5
-Total: 5
+Failed: 6
+Total: 6
 
-Duration: 29ms
+Duration: 904ms
 
- 5 out of 5 tests failed!
+6 out of 6 tests failed!

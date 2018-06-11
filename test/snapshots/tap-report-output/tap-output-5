@@ -1,0 +1,28 @@
+TAP version 13
+
+# Tests
+
+✔  1 - optional message 0 (885ms)
+✖  2 - optional message 1 (40ms)
+    
+    # Error
+    "a" => 2
+    
+    # File
+    test/tests/tap-output-5.js:5:5
+    
+    4: tap.equal(1 === 1, true, 'optional message 0');
+    5: tap.equal('a', 2, 'optional message 1');
+    6: 
+
+Bailed out!
+
+# Summary
+
+Passed: 1
+Failed: 1
+Total: 2
+
+Duration: 943ms
+
+1 out of 2 tests failed!
