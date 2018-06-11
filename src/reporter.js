@@ -18,7 +18,7 @@ function reporter() {
 
   parser.on('version', handleVersion);
   parser.on('assert', handleAssert);
-  parser.on('bailout', handleBailout);
+  parser.on('bailout', reason => handleBailout(reason));
   parser.on('complete', () => handleComplete(parser));
   parser.on('child', childParser => {
     childParser.on('assert', handleAssert);
@@ -84,8 +84,8 @@ function handleAssert(assert) {
   }
 }
 
-function handleBailout() {
-  format.printBailout();
+function handleBailout(reason) {
+  format.printBailout(reason);
 }
 
 function handleComplete(parser) {

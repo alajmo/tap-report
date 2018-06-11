@@ -123,8 +123,8 @@ function printFailedAssert({ id, name, durationPerAssert, diag = {} }) {
   println();
 }
 
-function printBailout() {
-  println(chalk.red(`Bailed out!`));
+function printBailout(reason) {
+  println(chalk.red(`\nBail out! ${reason}`));
 }
 
 function printDifference({ found, wanted }) {
