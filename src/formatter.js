@@ -48,14 +48,12 @@ function printEndTest({
   if (numFailed === 0) {
     println(`Total: ${numTests}\n`);
     println(`Duration: ${prettyMs(duration)}`);
-    println(chalk.bgGreen.black('\n All tests passed! \n'));
+    println(chalk.green('\nAll tests passed! \n'));
   } else {
     println(`Failed: ${numFailedColorized}`);
     println(`Total: ${numTests}\n`);
     println(`Duration: ${prettyMs(duration)}`);
-    println(
-      chalk.bgRed.black(`\n ${numFailed} out of ${numTests} tests failed!`)
-    );
+    println(chalk.red(`\n${numFailed} out of ${numTests} tests failed!`));
   }
 }
 
@@ -126,7 +124,7 @@ function printFailedAssert({ id, name, durationPerAssert, diag = {} }) {
 }
 
 function printBailout() {
-  chalk.red(`Bailed out!`);
+  println(chalk.red(`Bailed out!`));
 }
 
 function printDifference({ found, wanted }) {
