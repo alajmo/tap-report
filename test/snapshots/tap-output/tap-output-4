@@ -24,13 +24,13 @@ TAP version 13
         ok 2 - olololo
         1..2
         # failed 1 of 2 tests
-    not ok 3 - subtests # time=12.318ms
+    not ok 3 - subtests # time=32.833ms
     
     ok 4 - bar
     1..4
     # failed 1 of 4 tests
-    # time=23.742ms
-not ok 1 - /home/samir/Projects/programming/tap-report/test/tests/tap-output-4.js # time=879.43ms
+    # time=75.763ms
+not ok 1 - /home/samir/Projects/programming/tap-report/test/tests/tap-output-4.js # time=870.471ms
   ---
   timeout: 30000
   file: /home/samir/Projects/programming/tap-report/test/tests/tap-output-4.js
@@ -47,4 +47,4 @@ not ok 1 - /home/samir/Projects/programming/tap-report/test/tests/tap-output-4.j
 
 1..1
 # failed 1 test
-# time=917.521ms
+# time=925.979ms

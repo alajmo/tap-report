@@ -2,8 +2,8 @@ TAP version 13
 
 # Tests
 
-✔  1 - optional message 0 (885ms)
-✖  2 - optional message 1 (40ms)
+✔  1 - optional message 0 (802ms)
+✖  2 - optional message 1 (87ms)
     
     # Error
     "a" => 2
@@ -15,7 +15,8 @@ TAP version 13
     5: tap.equal('a', 2, 'optional message 1');
     6: 
 
-Bailed out!
+
+Bail out! # optional message 1
 
 # Summary
 
@@ -23,6 +24,6 @@ Passed: 1
 Failed: 1
 Total: 2
 
-Duration: 943ms
+Duration: 913ms
 
 1 out of 2 tests failed!

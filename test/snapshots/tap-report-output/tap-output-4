@@ -2,10 +2,10 @@ TAP version 13
 
 # Tests
 
-✔  1 - foo (744ms)
-✔  2 - bar (43ms)
-✔  3 - bar (2ms)
-✖  4 - /home/samir/Projects/programming/tap-report/test/tests/tap-output-4.js (21ms)
+✔  1 - foo (840ms)
+✔  2 - bar (25ms)
+✔  3 - bar (3ms)
+✖  4 - /home/samir/Projects/programming/tap-report/test/tests/tap-output-4.js (19ms)
     
     # Error
     
@@ -17,6 +17,6 @@ Passed: 3
 Failed: 1
 Total: 4
 
-Duration: 892ms
+Duration: 945ms
 
 1 out of 4 tests failed!
