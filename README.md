@@ -2,6 +2,8 @@
 
 A tap (test anything protocol) consumer that provides user friendly and informative tap output.
 
+![example output of tap-report](media/output.gif)
+
 ### Features
 
 * User friendly assertion messages
@@ -33,6 +35,16 @@ Examples:
   $ <tap output> | tap-report
 ```
 
+## API
+
+Can also be consumed programmatically (via streams):
+
+```js
+const tap = require('tap');
+const tapReport = require('tap-report');
+tap.pipe(tapReport());
+```
+
 ## Inspiration
 
 * [ava](https://github.com/avajs/ava)
@@ -42,17 +54,23 @@ Examples:
 
 ## Contribution
 
-Follows [Conventional Commits](https://conventionalcommits.org/).
+Follows [guidelines](docs/CONTRIBUTING.md) and [conventional commits](https://conventionalcommits.org/).
 
 ```sh
 # Install dependencies
 $ npm install
 
-# Starts an auto-refresh dev script
+# Start auto-refresh development scripts
 # $ npm run dev
+# $ npm run dev-example
+# $ npm run dev-tap
 
-# If you change the terminal output generate new test cases
-# $ npm generate-test-data
+# In case output is modified, generate new snapshots
+# $ npm run generate-test-data
 
+# In case output is modified, create new example gif (requires docker and imagemagick)
+# $ npm run generate-media
+
+# Run tests
 $ npm test
 ```

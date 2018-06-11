@@ -1,0 +1,190 @@
+{
+  "width": 106,
+  "title": "tap-report",
+  "height": 43,
+  "duration": 8.868606,
+  "env": {
+    "SHELL": "/bin/bash",
+    "TERM": "xterm-256color"
+  },
+  "command": "\n    clear\n    export PS1=\"\\$ \"\n    sleep 2s\n    echo \"$ node scripts/tap-report-example.js | tap-report\" | pv -qL 30\n    node scripts/tap-report-example.js | tap-report\n    sleep 5s\n    echo 1\n  ",
+  "version": 1,
+  "stdout": [
+    [
+      0.007595,
+      "\u001b[3;J\u001b[H\u001b[2J"
+    ],
+    [
+      2.001915,
+      "$ n"
+    ],
+    [
+      0.180372,
+      "ode"
+    ],
+    [
+      0.090228,
+      " sc"
+    ],
+    [
+      0.090161,
+      "rip"
+    ],
+    [
+      0.090203,
+      "ts/"
+    ],
+    [
+      0.090196,
+      "tap"
+    ],
+    [
+      0.090209,
+      "-re"
+    ],
+    [
+      0.090056,
+      "por"
+    ],
+    [
+      0.090104,
+      "t-e"
+    ],
+    [
+      0.090204,
+      "xam"
+    ],
+    [
+      0.180348,
+      "ple"
+    ],
+    [
+      0.090162,
+      ".js"
+    ],
+    [
+      0.090167,
+      " | "
+    ],
+    [
+      0.090197,
+      "tap"
+    ],
+    [
+      0.090198,
+      "-re"
+    ],
+    [
+      0.090061,
+      "por"
+    ],
+    [
+      0.090155,
+      "t\r\n"
+    ],
+    [
+      0.210515,
+      "\u001b[1mTAP version 13\u001b[22m\r\n"
+    ],
+    [
+      0.000155,
+      "\u001b[1m\u001b[22m\r\n"
+    ],
+    [
+      0.000177,
+      "\u001b[1m# Tests\u001b[22m\r\n"
+    ],
+    [
+      2.5e-05,
+      "\u001b[1m\u001b[22m\r\n"
+    ],
+    [
+      0.010942,
+      "\u001b[32m✔\u001b[39m  1 - custom message (12ms)\r\n"
+    ],
+    [
+      0.005186,
+      "\u001b[31m✖\u001b[39m  \u001b[2m2\u001b[22m - \u001b[2mshould be equivalent\u001b[22m (5ms)\r\n"
+    ],
+    [
+      0.000151,
+      "    \u001b[1m\u001b[22m\r\n    \u001b[1m# Error\u001b[22m\r\n"
+    ],
+    [
+      0.003026,
+      "    {\r\n      foo: \u001b[31m\"bar\"\u001b[39m => \u001b[32m\"ba\"\u001b[39m\r\n"
+    ],
+    [
+      0.000141,
+      "    }\r\n"
+    ],
+    [
+      3.1e-05,
+      "    \u001b[1m\u001b[22m\r\n"
+    ],
+    [
+      1.9e-05,
+      "    \u001b[1m# File\u001b[22m\r\n"
+    ],
+    [
+      7.8e-05,
+      "    \u001b[2mscripts/tap-report-example.js:5:5\u001b[22m\r\n"
+    ],
+    [
+      2.1e-05,
+      "    \r\n"
+    ],
+    [
+      0.000386,
+      "    \u001b[2m4: tap.test('subtest exampke', t => {\u001b[22m\r\n"
+    ],
+    [
+      2.9e-05,
+      "    5:   t.deepEqual({ foo: 'bar' }, { foo: 'ba' });\r\n"
+    ],
+    [
+      1.8e-05,
+      "    \u001b[2m6:   t.end();\u001b[22m\r\n"
+    ],
+    [
+      0.000108,
+      "\r\n"
+    ],
+    [
+      0.002047,
+      "\u001b[1m\u001b[22m\r\n\u001b[1m# Summary\u001b[22m\r\n\u001b[1m\u001b[22m\r\n"
+    ],
+    [
+      2.1e-05,
+      "Passed: \u001b[32m1\u001b[39m\r\n"
+    ],
+    [
+      2.1e-05,
+      "Failed: \u001b[31m1\u001b[39m\r\n"
+    ],
+    [
+      1e-05,
+      "Total: 2\r\n"
+    ],
+    [
+      1e-05,
+      "\r\n"
+    ],
+    [
+      1.8e-05,
+      "Duration: 24ms\r\n"
+    ],
+    [
+      5.6e-05,
+      "\u001b[31m\u001b[39m\r\n"
+    ],
+    [
+      1.7e-05,
+      "\u001b[31m1 out of 2 tests failed!\u001b[39m\r\n"
+    ],
+    [
+      5.00276,
+      "1\r\n"
+    ]
+  ]
+}

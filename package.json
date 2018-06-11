@@ -7,11 +7,14 @@
   "scripts": {
     "test": "node test/index.js run-tests | ./bin/tap-report",
     "generate-test-data": "node test/index.js generate-test-data",
+    "generate-media": "./scripts/generate-media.sh",
     "dev": "nodemon --quiet --exec \"clear && node test/tap-output.js | ./bin/tap-report \"",
-    "dev-normal": "nodemon --quiet --exec \"clear && node test/tap-output.js --reporter tap \"",
+    "dev-tap": "nodemon --quiet --exec \"clear && node scripts/tap-report-example.js | ./bin/tap-report \"",
+    "dev-example": "nodemon --quiet --exec \"clear && node test/tap-output.js | ./bin/tap-report \"",
     "lint": "huel lint --src src",
     "format": "huel format --src src",
     "commitlint": "huel commitmsg",
+    "lala": "./node_modules/a2png/a2png.sh",
     "changelog": "huel changelog && git add CHANGELOG.md && git commit -m \"chore: update changelog\""
   },
   "author": "",
@@ -25,6 +28,8 @@
     "tap-parser": "7.0.0"
   },
   "devDependencies": {
+    "a2png": "git+https://github.com/asciinema/a2png.git",
+    "asciicast2gif": "0.2.0",
     "del": "3.0.0",
     "diff": "3.5.0",
     "huel": "1.0.0-alpha.23",
