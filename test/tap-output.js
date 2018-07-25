@@ -25,11 +25,11 @@ const bar = {
 
 // Passing
 // tap.equal(2 === 1, true, 'foo');
-tap.equal('foo', 'foo', 'bar');
+tap.equal('oo', 'foo', 'bar');
 
 tap.test('get thing', t => {
   t.equal(2, 2, 'get thing sub test 1');
-  t.equal(2, 2, 'get thing sub test 2');
+  t.equal(1, 2, 'get thing sub test 2');
   t.end();
 });
 
