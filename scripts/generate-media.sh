@@ -47,4 +47,3 @@ main() {
   # generate_png
 }
 main
-
