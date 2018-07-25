@@ -1,6 +1,7 @@
 const Parser = require('tap-parser');
 const format = require('./formatter.js');
 
+let currentId = 0;
 const stats = {
   numTests: 0,
   numSkipped: 0,
@@ -10,6 +11,7 @@ const stats = {
   duration: 0,
   durationPerAssert: 0
 };
+let childAsserts = [];
 
 module.exports = reporter;
 
@@ -20,9 +22,9 @@ function reporter() {
   parser.on('assert', handleAssert);
   parser.on('bailout', reason => handleBailout(reason));
   parser.on('complete', () => handleComplete(parser));
-  parser.on('child', childParser => {
-    childParser.on('assert', handleAssert);
-  });
+  parser.on('child', childParser =>
+    childParser.on('assert', handleChildAssert)
+  );
 
   process.on('exit', () => handleExit(parser));
 
@@ -40,48 +42,74 @@ function handleVersion(version) {
   startTest(version);
 }
 
+function handleChildAssert(assert) {
+  childAsserts.push(assert);
+}
+
 function handleAssert(assert) {
+  if (childAsserts.length > 0) {
+    processAssert({ assert, countTest: false, subTest: false });
+    childAsserts.forEach(assert => processAssert({ assert, subTest: true }));
+    childAsserts = [];
+  } else {
+    processAssert({ assert });
+  }
+}
+
+function processAssert({ assert, countTest = true, subTest = false }) {
   stats.durationPerAssert = Date.now() - stats.durationPerAssert;
 
   if (assert.skip) {
-    stats.numSkipped += 1;
-    stats.numTests += 1;
+    if (countTest) {
+      stats.numSkipped += 1;
+      stats.numTests += 1;
+    }
     format.printSkippedAssert({
       ...assert,
-      id: stats.numTests,
+      id: currentId,
+      subTest,
       durationPerAssert: stats.durationPerAssert
     });
     stats.durationPerAssert = Date.now();
   } else if (assert.todo) {
-    stats.numTodo += 1;
-    stats.numTests += 1;
+    if (countTest) {
+      stats.numTodo += 1;
+      stats.numTests += 1;
+    }
     format.printTodoAssert({
       ...assert,
-      id: stats.numTests,
+      id: currentId,
+      subTest,
       durationPerAssert: stats.durationPerAssert
     });
     stats.durationPerAssert = Date.now();
   } else if (assert.ok) {
-    stats.numPassed += 1;
-    stats.numTests += 1;
+    if (countTest) {
+      stats.numPassed += 1;
+      stats.numTests += 1;
+    }
     format.printSuccessfulAssert({
       ...assert,
-      id: stats.numTests,
+      id: currentId,
+      subTest,
       durationPerAssert: stats.durationPerAssert
     });
     stats.durationPerAssert = Date.now();
   } else {
-    if (assert.diag) {
+    if (countTest) {
       stats.numFailed += 1;
       stats.numTests += 1;
-      format.printFailedAssert({
-        ...assert,
-        id: stats.numTests,
-        durationPerAssert: stats.durationPerAssert
-      });
     }
+    format.printFailedAssert({
+      ...assert,
+      id: currentId,
+      subTest,
+      durationPerAssert: stats.durationPerAssert
+    });
     stats.durationPerAssert = Date.now();
   }
+
+  currentId += 1;
 }
 
 function handleBailout(reason) {

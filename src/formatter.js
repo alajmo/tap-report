@@ -61,7 +61,7 @@ function printTapVersion(version) {
   println(chalk.bold(`TAP version ${version}\n`));
 }
 
-function printSuccessfulAssert({ id, name, durationPerAssert }) {
+function printSuccessfulAssert({ id, name, durationPerAssert, subTest }) {
   const odd = parseInt(id) % 2;
   const nameParam = odd ? `${name}` : chalk.dim(`${name}`);
   const idParam = odd ? `${id}` : chalk.dim(`${id}`);
@@ -69,11 +69,12 @@ function printSuccessfulAssert({ id, name, durationPerAssert }) {
   println(
     `${chalk.green(CHAR_TICK)}  ${idParam} - ${nameParam} (${prettyMs(
       durationPerAssert
-    )})`
+    )})`,
+    subTest ? 2 : 0
   );
 }
 
-function printSkippedAssert({ id, name, durationPerAssert }) {
+function printSkippedAssert({ id, name, durationPerAssert, subTest }) {
   const odd = parseInt(id) % 2;
   const nameParam = odd ? `${name}` : chalk.dim(`${name}`);
   const skipParam = odd ? '(skip)' : chalk.dim('(skip)');
@@ -82,11 +83,14 @@ function printSkippedAssert({ id, name, durationPerAssert }) {
   println(
     `${chalk.yellow(
       CHAR_WARNING
-    )}  ${idParam} - ${nameParam} ${skipParam} (${prettyMs(durationPerAssert)})`
+    )}  ${idParam} - ${nameParam} ${skipParam} (${prettyMs(
+      durationPerAssert
+    )})`,
+    subTest ? 2 : 0
   );
 }
 
-function printTodoAssert({ id, name, durationPerAssert }) {
+function printTodoAssert({ id, name, durationPerAssert, subTest }) {
   const odd = parseInt(id) % 2;
   const nameParam = odd ? `${name}` : chalk.dim(`${name}`);
   const todoParam = odd ? '(todo)' : chalk.dim('(todo)');
@@ -95,11 +99,20 @@ function printTodoAssert({ id, name, durationPerAssert }) {
   println(
     `${chalk.yellow(
       CHAR_WARNING
-    )}  ${idParam} - ${nameParam} ${todoParam} (${prettyMs(durationPerAssert)})`
+    )}  ${idParam} - ${nameParam} ${todoParam} (${prettyMs(
+      durationPerAssert
+    )})`,
+    subTest ? 2 : 0
   );
 }
 
-function printFailedAssert({ id, name, durationPerAssert, diag = {} }) {
+function printFailedAssert({
+  id,
+  name,
+  durationPerAssert,
+  diag = {},
+  subTest
+}) {
   const odd = parseInt(id) % 2;
 
   // Message
@@ -109,7 +122,8 @@ function printFailedAssert({ id, name, durationPerAssert, diag = {} }) {
   println(
     `${chalk.red(CHAR_CROSS)}  ${idParam} - ${nameParam} (${prettyMs(
       durationPerAssert
-    )})`
+    )})`,
+    subTest ? 2 : 0
   );
 
   if (Object.keys(diag).length === 0) {
@@ -117,9 +131,9 @@ function printFailedAssert({ id, name, durationPerAssert, diag = {} }) {
   }
 
   // Details
-  println(chalk.bold('\n# Error'), 4);
-  printDifference(({ found, wanted } = diag));
-  printFileErrorLines(diag.at);
+  println(chalk.bold('\n# Error'), subTest ? 6 : 4);
+  printDifference({ subTest, ...diag });
+  printFileErrorLines({ at: diag.at, subTest });
   println();
 }
 
@@ -127,13 +141,14 @@ function printBailout(reason) {
   println(chalk.red(`Bail out! ${reason}`));
 }
 
-function printDifference({ found, wanted }) {
+function printDifference({ found, wanted, subTest }) {
+  // console.log(subTest);
   const foundParsed = parseValue(found);
   const wantedParsed = parseValue(wanted);
 
   const delta = jsondiffpatch.diff(foundParsed, wantedParsed);
   const output = jsondiffpatch.formatters.console.format(delta);
-  println(output, 4);
+  println(output, subTest ? 6 : 4);
 }
 
 function parseValue(value) {
@@ -146,20 +161,20 @@ function parseValue(value) {
   return valueParsed;
 }
 
-function printFileErrorLines(at) {
+function printFileErrorLines({ at, subTest }) {
   if (!at) {
     return;
   }
-  println(chalk.bold('\n# File'), 4);
+  println(chalk.bold('\n# File'), subTest ? 6 : 4);
 
   const { file, line: lineNum, column } = at;
 
-  println(`${chalk.dim(`${file}:${lineNum}:${column}`)}\n`, 4);
+  println(`${chalk.dim(`${file}:${lineNum}:${column}`)}\n`, subTest ? 6 : 4);
 
   const lines = getLinesFromFile(file, lineNum, NUM_SURROUNDING_LINES);
   lines.map(elem => {
     lineNum === elem.lineNum
-      ? println(elem.line, 4)
-      : println(chalk.dim(elem.line), 4);
+      ? println(elem.line, subTest ? 6 : 4)
+      : println(chalk.dim(elem.line), subTest ? 6 : 4);
   });
 }
