@@ -24,12 +24,12 @@ const bar = {
 // tap.equal(1 === 1, true, 'todo message', { todo: true });
 
 // Passing
-tap.equal(1 === 1, true, 'foo');
+// tap.equal(2 === 1, true, 'foo');
 tap.equal('foo', 'foo', 'bar');
 
-tap.test('get thing', { bail: true }, t => {
-  t.equal(1, 2, 'lala land');
-  t.equal(2, 2, 'olololo');
+tap.test('get thing', t => {
+  t.equal(2, 2, 'get thing sub test 1');
+  t.equal(2, 2, 'get thing sub test 2');
   t.end();
 });
 

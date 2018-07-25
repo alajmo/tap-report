@@ -2,87 +2,87 @@ TAP version 13
 
 # Tests
 
-✖  1 - optional message 0 (884ms)
+✖  0 - /home/samir/Projects/programming/tap-report/test/tests/tap-output-2.js (1.6s)
     
     # Error
-    false => true
     
-    # File
-    test/tests/tap-output-2.js:4:5
-    
-    3: 
-    4: tap.equal(1 !== 1, true, 'optional message 0');
-    5: tap.equal(2, 3, 'optional message 1');
 
-✖  2 - optional message 1 (35ms)
-    
-    # Error
-    2 => 3
-    
-    # File
-    test/tests/tap-output-2.js:5:5
-    
-    4: tap.equal(1 !== 1, true, 'optional message 0');
-    5: tap.equal(2, 3, 'optional message 1');
-    6: 
+  ✖  1 - optional message 0 (0ms)
+      
+      # Error
+      false => true
+      
+      # File
+      test/tests/tap-output-2.js:4:5
+      
+      3: 
+      4: tap.equal(1 !== 1, true, 'optional message 0');
+      5: tap.equal(2, 3, 'optional message 1');
 
-✖  3 - optional message 2 (11ms)
-    
-    # Error
-    false => true
-    
-    # File
-    test/tests/tap-output-2.js:7:5
-    
-    6: 
-    7: tap.equal(1 === 2, true, 'optional message 2');
-    8: 
+  ✖  2 - optional message 1 (0ms)
+      
+      # Error
+      2 => 3
+      
+      # File
+      test/tests/tap-output-2.js:5:5
+      
+      4: tap.equal(1 !== 1, true, 'optional message 0');
+      5: tap.equal(2, 3, 'optional message 1');
+      6: 
 
-✖  4 - deep equal 2 (22ms)
-    
-    # Error
-    {
-      hello: "y friend" => "my friend"
-    }
-    
-    # File
-    test/tests/tap-output-2.js:9:5
-    
-    8: 
-    9: tap.deepEqual({ hello: 'y friend' }, { hello: 'my friend' }, 'deep equal 2');
-    10: 
+  ✖  3 - optional message 2 (0ms)
+      
+      # Error
+      false => true
+      
+      # File
+      test/tests/tap-output-2.js:7:5
+      
+      6: 
+      7: tap.equal(1 === 2, true, 'optional message 2');
+      8: 
 
-✖  5 - deep equal 2 (19ms)
-    
-    # Error
-    {
-      ello: {
-        "world": "my friend"
+  ✖  4 - deep equal 2 (0ms)
+      
+      # Error
+      {
+        hello: "y friend" => "my friend"
       }
-      hello: {
-        "world": "my friend"
-      }
-    }
-    
-    # File
-    test/tests/tap-output-2.js:11:5
-    
-    10: 
-    11: tap.deepEqual(
-    12:   { ello: { world: 'my friend' } },
+      
+      # File
+      test/tests/tap-output-2.js:9:5
+      
+      8: 
+      9: tap.deepEqual({ hello: 'y friend' }, { hello: 'my friend' }, 'deep equal 2');
+      10: 
 
-✖  6 - /home/samir/Projects/programming/tap-report/test/tests/tap-output-2.js (32ms)
-    
-    # Error
-    
+  ✖  5 - deep equal 2 (0ms)
+      
+      # Error
+      {
+        ello: {
+          "world": "my friend"
+        }
+        hello: {
+          "world": "my friend"
+        }
+      }
+      
+      # File
+      test/tests/tap-output-2.js:11:5
+      
+      10: 
+      11: tap.deepEqual(
+      12:   { ello: { world: 'my friend' } },
 
 
 # Summary
 
 Passed: 0
-Failed: 6
-Total: 6
+Failed: 5
+Total: 5
 
-Duration: 1s
+Duration: 1.6s
 
-6 out of 6 tests failed!
+5 out of 5 tests failed!

@@ -94,7 +94,7 @@ function runTests(tapDataDir, tapReportDataDir, bin) {
       if (
         (part.added || part.removed) &&
         !part.value.includes('Duration: ') &&
-        !part.value.includes('ms)')
+        !part.value.includes('s)')
       ) {
         foundDifference = true;
       }

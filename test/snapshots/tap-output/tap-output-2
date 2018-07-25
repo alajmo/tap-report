@@ -81,8 +81,8 @@ TAP version 13
     
     1..5
     # failed 5 of 5 tests
-    # time=85.488ms
-not ok 1 - /home/samir/Projects/programming/tap-report/test/tests/tap-output-2.js # time=900.064ms
+    # time=59.846ms
+not ok 1 - /home/samir/Projects/programming/tap-report/test/tests/tap-output-2.js # time=1363.698ms
   ---
   timeout: 30000
   file: /home/samir/Projects/programming/tap-report/test/tests/tap-output-2.js
@@ -99,4 +99,4 @@ not ok 1 - /home/samir/Projects/programming/tap-report/test/tests/tap-output-2.j
 
 1..1
 # failed 1 test
-# time=963.88ms
+# time=1451.165ms
