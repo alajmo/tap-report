@@ -15,9 +15,9 @@ module.exports = {
   printEndTest
 };
 
-const CHAR_WARNING = figures.warning;
-const CHAR_TICK = figures.tick;
-const CHAR_CROSS = figures.cross;
+const WARNING_FIGURE = figures.bullet;
+const SUCCESS_FIGURE = figures.bullet;
+const FAILURE_FIGURE = figures.bullet;
 const NUM_SURROUNDING_LINES = 1;
 
 function printStartTest() {
@@ -67,7 +67,7 @@ function printSuccessfulAssert({ id, name, durationPerAssert, subTest }) {
   const idParam = odd ? `${id}` : chalk.dim(`${id}`);
 
   println(
-    `${chalk.green(CHAR_TICK)}  ${idParam} - ${nameParam} (${prettyMs(
+    `${chalk.green(SUCCESS_FIGURE)}  ${idParam} - ${nameParam} (${prettyMs(
       durationPerAssert
     )})`,
     subTest ? 2 : 0
@@ -82,7 +82,7 @@ function printSkippedAssert({ id, name, durationPerAssert, subTest }) {
 
   println(
     `${chalk.yellow(
-      CHAR_WARNING
+      WARNING_FIGURE
     )}  ${idParam} - ${nameParam} ${skipParam} (${prettyMs(
       durationPerAssert
     )})`,
@@ -98,7 +98,7 @@ function printTodoAssert({ id, name, durationPerAssert, subTest }) {
 
   println(
     `${chalk.yellow(
-      CHAR_WARNING
+      WARNING_FIGURE
     )}  ${idParam} - ${nameParam} ${todoParam} (${prettyMs(
       durationPerAssert
     )})`,
@@ -120,7 +120,7 @@ function printFailedAssert({
   const idParam = odd ? `${id}` : chalk.dim(`${id}`);
 
   println(
-    `${chalk.red(CHAR_CROSS)}  ${idParam} - ${nameParam} (${prettyMs(
+    `${chalk.red(FAILURE_FIGURE)}  ${idParam} - ${nameParam} (${prettyMs(
       durationPerAssert
     )})`,
     subTest ? 2 : 0
