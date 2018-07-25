@@ -2,6 +2,8 @@ const Parser = require('tap-parser');
 const format = require('./formatter.js');
 
 let currentId = 0;
+// Global object containing the stats since the
+// input data is coming from a stream.
 const stats = {
   numTests: 0,
   numSkipped: 0,
@@ -11,6 +13,9 @@ const stats = {
   duration: 0,
   durationPerAssert: 0
 };
+// Since subtests comes before their parents, the subtests
+// are saved in an array to be printed after the parent
+// has been printed. Afterward, they are flushed.
 let childAsserts = [];
 
 module.exports = reporter;
