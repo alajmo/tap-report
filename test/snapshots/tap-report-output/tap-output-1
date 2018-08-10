@@ -2,23 +2,23 @@ TAP version 13
 
 # Tests
 
-✖  0 - /home/samir/Projects/programming/tap-report/test/tests/tap-output-1.js (2.4s)
+●  0 - /home/samir/Projects/programming/tap-report/test/tests/tap-output-1.js (1.7s)
     
     # Error
     
 
-  ✔  1 - optional message 0 (0ms)
-  ✔  2 - optional message 1 (0ms)
-  ✔  3 - optional message 2 (0ms)
-  ✔  4 - deep equal 2 (0ms)
-  ✔  5 - deep equal 2 (0ms)
+  ●  1 - optional message 0 (0ms)
+  ●  2 - optional message 1 (0ms)
+  ●  3 - optional message 2 (0ms)
+  ●  4 - deep equal 2 (0ms)
+  ●  5 - deep equal 2 (0ms)
 
 # Summary
 
 Passed: 5
 Total: 5
 
-Duration: 2.5s
+Duration: 1.7s
 
 All tests passed! 
 

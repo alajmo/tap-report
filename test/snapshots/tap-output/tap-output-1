@@ -6,8 +6,8 @@ TAP version 13
     ok 4 - deep equal 2
     ok 5 - deep equal 2
     1..5
-    # time=57.182ms
-not ok 1 - /home/samir/Projects/programming/tap-report/test/tests/tap-output-1.js # time=2230.21ms
+    # time=45.91ms
+not ok 1 - /home/samir/Projects/programming/tap-report/test/tests/tap-output-1.js # time=1804.344ms
   ---
   timeout: 30000
   file: /home/samir/Projects/programming/tap-report/test/tests/tap-output-1.js
@@ -24,4 +24,4 @@ not ok 1 - /home/samir/Projects/programming/tap-report/test/tests/tap-output-1.j
 
 1..1
 # failed 1 test
-# time=2307.308ms
+# time=1861.239ms

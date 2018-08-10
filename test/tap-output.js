@@ -25,15 +25,15 @@ const bar = {
 
 // Passing
 // tap.equal(2 === 1, true, 'foo');
-tap.equal('oo', 'foo', 'bar');
+// tap.equal('foo', 'foo', 'bar');
 
-tap.test('get thing', t => {
-  t.equal(2, 2, 'get thing sub test 1');
-  t.equal(1, 2, 'get thing sub test 2');
+tap.test('get thing',  t => {
+  t.equal(3, 2, 'get thing sub test 1');
+  t.equal(2, 2, 'get thing sub test 2');
   t.end();
 });
 
-tap.equal('foo', 'foo', 'bar');
+// tap.equal('foo', 'foo', 'bar');
 
 // Failing
 // tap.equal(1 === 2, true, 'optional message 1');
