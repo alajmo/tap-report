@@ -63,6 +63,8 @@ function printTapVersion(version) {
 
 function printSuccessfulAssert({ id, name, durationPerAssert, subTest }) {
   const odd = parseInt(id) % 2;
+
+  // Message
   const nameParam = odd ? `${name}` : chalk.dim(`${name}`);
   const idParam = odd ? `${id}` : chalk.dim(`${id}`);
 
@@ -116,7 +118,9 @@ function printFailedAssert({
   const odd = parseInt(id) % 2;
 
   // Message
-  const nameParam = odd ? `${name}` : chalk.dim(`${name}`);
+  const nameParam = odd
+    ? `${chalk.underline(name)}`
+    : chalk.dim.underline(`${name}`);
   const idParam = odd ? `${id}` : chalk.dim(`${id}`);
 
   println(
