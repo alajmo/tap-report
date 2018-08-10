@@ -1,190 +1,186 @@
 {
-  "height": 76,
-  "width": 273,
   "title": "tap-report",
-  "duration": 8.842352,
-  "stdout": [
-    [
-      0.00764,
-      "\u001b[3;J\u001b[H\u001b[2J"
-    ],
-    [
-      2.005406,
-      "$ n"
-    ],
-    [
-      0.180164,
-      "ode"
-    ],
-    [
-      0.090263,
-      " sc"
-    ],
-    [
-      0.090138,
-      "rip"
-    ],
-    [
-      0.090202,
-      "ts/"
-    ],
-    [
-      0.090165,
-      "tap"
-    ],
-    [
-      0.09026,
-      "-re"
-    ],
-    [
-      0.09018,
-      "por"
-    ],
-    [
-      0.090271,
-      "t-e"
-    ],
-    [
-      0.090189,
-      "xam"
-    ],
-    [
-      0.180437,
-      "ple"
-    ],
-    [
-      0.090029,
-      ".js"
-    ],
-    [
-      0.090292,
-      " | "
-    ],
-    [
-      0.090128,
-      "tap"
-    ],
-    [
-      0.090177,
-      "-re"
-    ],
-    [
-      0.090168,
-      "por"
-    ],
-    [
-      0.09019,
-      "t\r\n"
-    ],
-    [
-      0.178385,
-      "\u001b[1mTAP version 13\u001b[22m\r\n"
-    ],
-    [
-      0.000135,
-      "\u001b[1m\u001b[22m\r\n"
-    ],
-    [
-      0.00019,
-      "\u001b[1m# Tests\u001b[22m\r\n"
-    ],
-    [
-      2.1e-05,
-      "\u001b[1m\u001b[22m\r\n"
-    ],
-    [
-      0.011338,
-      "\u001b[32m●\u001b[39m  \u001b[2m0\u001b[22m - \u001b[2mcustom message\u001b[22m (12ms)\r\n"
-    ],
-    [
-      0.006789,
-      "\u001b[31m●\u001b[39m  1 - \u001b[4msubtest example\u001b[24m (6ms)\r\n"
-    ],
-    [
-      0.000226,
-      "  \u001b[31m●\u001b[39m  \u001b[2m2\u001b[22m - \u001b[2m\u001b[4mshould be equivalent\u001b[24m\u001b[22m (0ms)\r\n"
-    ],
-    [
-      5.4e-05,
-      "      \u001b[1m\u001b[22m\r\n"
-    ],
-    [
-      2.1e-05,
-      "      \u001b[1m# Error\u001b[22m\r\n"
-    ],
-    [
-      0.003563,
-      "      {\r\n        foo: \u001b[31m\"bar\"\u001b[39m => \u001b[32m\"ba\"\u001b[39m\r\n"
-    ],
-    [
-      3.7e-05,
-      "      }\r\n"
-    ],
-    [
-      0.000207,
-      "      \u001b[1m\u001b[22m\r\n      \u001b[1m# File\u001b[22m\r\n"
-    ],
-    [
-      9.2e-05,
-      "      \u001b[2mscripts/tap-report-example.js:5:5\u001b[22m\r\n      \r\n"
-    ],
-    [
-      0.000344,
-      "      \u001b[2m4: tap.test('subtest example', t => {\u001b[22m\r\n      5:   t.deepEqual({ foo: 'bar' }, { foo: 'ba' });\r\n"
-    ],
-    [
-      1.8e-05,
-      "      \u001b[2m6:   t.end();\u001b[22m\r\n"
-    ],
-    [
-      5.8e-05,
-      "\r\n"
-    ],
-    [
-      0.001428,
-      "\u001b[1m\u001b[22m\r\n"
-    ],
-    [
-      1.5e-05,
-      "\u001b[1m# Summary\u001b[22m\r\n\u001b[1m\u001b[22m\r\n"
-    ],
-    [
-      4.5e-05,
-      "Passed: \u001b[32m1\u001b[39m\r\n"
-    ],
-    [
-      1e-05,
-      "Failed: \u001b[31m1\u001b[39m\r\n"
-    ],
-    [
-      1.8e-05,
-      "Total: 2\r\n"
-    ],
-    [
-      9e-06,
-      "\r\n"
-    ],
-    [
-      2.4e-05,
-      "Duration: 25ms\r\n"
-    ],
-    [
-      4.3e-05,
-      "\u001b[31m\u001b[39m\r\n"
-    ],
-    [
-      1.3e-05,
-      "\u001b[31m1 out of 2 tests failed!\u001b[39m\r\n"
-    ],
-    [
-      5.002714,
-      "1\r\n"
-    ]
-  ],
-  "version": 1,
+  "width": 273,
   "command": "\n    clear\n    export PS1=\"\\$ \"\n    sleep 2s\n    echo \"$ node scripts/tap-report-example.js | tap-report\" | pv -qL 30\n    node scripts/tap-report-example.js | tap-report\n    sleep 5s\n    echo 1\n  ",
   "env": {
     "SHELL": "/bin/bash",
     "TERM": "xterm-256color"
-  }
+  },
+  "stdout": [
+    [
+      0.006274,
+      "\u001b[3;J\u001b[H\u001b[2J"
+    ],
+    [
+      2.002234,
+      "$ n"
+    ],
+    [
+      0.180391,
+      "ode"
+    ],
+    [
+      0.090031,
+      " sc"
+    ],
+    [
+      0.090324,
+      "rip"
+    ],
+    [
+      0.090221,
+      "ts/"
+    ],
+    [
+      0.090133,
+      "tap"
+    ],
+    [
+      0.090199,
+      "-re"
+    ],
+    [
+      0.090427,
+      "por"
+    ],
+    [
+      0.090064,
+      "t-e"
+    ],
+    [
+      0.090197,
+      "xam"
+    ],
+    [
+      0.18038,
+      "ple"
+    ],
+    [
+      0.090198,
+      ".js"
+    ],
+    [
+      0.090137,
+      " | "
+    ],
+    [
+      0.090459,
+      "tap"
+    ],
+    [
+      0.090042,
+      "-re"
+    ],
+    [
+      0.090254,
+      "por"
+    ],
+    [
+      0.090098,
+      "t\r\n"
+    ],
+    [
+      0.175804,
+      "\u001b[1mTAP version 13\u001b[22m\r\n"
+    ],
+    [
+      0.000118,
+      "\u001b[1m\u001b[22m\r\n"
+    ],
+    [
+      0.000192,
+      "\u001b[1m# Tests\u001b[22m\r\n"
+    ],
+    [
+      2.9e-05,
+      "\u001b[1m\u001b[22m\r\n"
+    ],
+    [
+      0.011346,
+      "\u001b[32m●\u001b[39m  \u001b[2m0\u001b[22m - \u001b[2mcustom message\u001b[22m (12ms)\r\n"
+    ],
+    [
+      0.007394,
+      "\u001b[31m●\u001b[39m  1 - \u001b[4msubtest example\u001b[24m (7ms)\r\n"
+    ],
+    [
+      0.000214,
+      "  \u001b[31m●\u001b[39m  \u001b[2m2\u001b[22m - \u001b[2m\u001b[4mshould be equivalent\u001b[24m\u001b[22m (0ms)\r\n"
+    ],
+    [
+      3.6e-05,
+      "      \u001b[1m\u001b[22m\r\n      \u001b[1m# Error\u001b[22m\r\n"
+    ],
+    [
+      0.003255,
+      "      {\r\n        foo: \u001b[31m\"bar\"\u001b[39m => \u001b[32m\"ba\"\u001b[39m\r\n      }\r\n"
+    ],
+    [
+      0.000171,
+      "      \u001b[1m\u001b[22m\r\n      \u001b[1m# File\u001b[22m\r\n"
+    ],
+    [
+      4.1e-05,
+      "      \u001b[2mscripts/tap-report-example.js:5:5\u001b[22m\r\n"
+    ],
+    [
+      1.5e-05,
+      "      \r\n"
+    ],
+    [
+      0.000325,
+      "      \u001b[2m4: tap.test('subtest example', t => {\u001b[22m\r\n"
+    ],
+    [
+      1.4e-05,
+      "      5:   t.deepEqual({ foo: 'bar' }, { foo: 'ba' });\r\n"
+    ],
+    [
+      4.2e-05,
+      "      \u001b[2m6:   t.end();\u001b[22m\r\n"
+    ],
+    [
+      2.8e-05,
+      "\r\n"
+    ],
+    [
+      0.0014,
+      "\u001b[1m\u001b[22m\r\n\u001b[1m# Summary\u001b[22m\r\n\u001b[1m\u001b[22m\r\n"
+    ],
+    [
+      2.1e-05,
+      "Passed: \u001b[32m1\u001b[39m\r\n"
+    ],
+    [
+      1.3e-05,
+      "Failed: \u001b[31m1\u001b[39m\r\n"
+    ],
+    [
+      1.2e-05,
+      "Total: 2\r\n"
+    ],
+    [
+      1.6e-05,
+      "\r\n"
+    ],
+    [
+      1.1e-05,
+      "Duration: 25ms\r\n"
+    ],
+    [
+      3.9e-05,
+      "\u001b[31m\u001b[39m\r\n"
+    ],
+    [
+      1.4e-05,
+      "\u001b[31m1 out of 2 tests failed!\u001b[39m\r\n"
+    ],
+    [
+      5.00324,
+      "1\r\n"
+    ]
+  ],
+  "version": 1,
+  "height": 76,
+  "duration": 8.836046
 }
