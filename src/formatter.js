@@ -9,6 +9,7 @@ module.exports = {
   printSuccessfulAssert,
   printSkippedAssert,
   printTodoAssert,
+  printExtra,
   printFailedAssert,
   printStartTest,
   printBailout,
@@ -22,6 +23,10 @@ const NUM_SURROUNDING_LINES = 1;
 
 function printStartTest() {
   println(chalk.bold('# Tests\n'));
+}
+
+function printExtra(extra) {
+  println(extra);
 }
 
 function printEndTest({

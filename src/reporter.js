@@ -27,6 +27,7 @@ function reporter() {
   parser.on('assert', handleAssert);
   parser.on('bailout', reason => handleBailout(reason));
   parser.on('complete', () => handleComplete(parser));
+  parser.on('extra', handleExtra);
   parser.on('child', childParser =>
     childParser.on('assert', handleChildAssert)
   );
@@ -59,6 +60,10 @@ function handleAssert(assert) {
   } else {
     processAssert({ assert });
   }
+}
+
+function handleExtra(extra) {
+  format.printExtra(extra);
 }
 
 function processAssert({ assert, countTest = true, subTest = false }) {
