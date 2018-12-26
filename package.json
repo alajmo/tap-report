@@ -1,6 +1,6 @@
 {
   "name": "tap-report",
-  "version": "0.4.2",
+  "version": "0.5.0",
   "description": "A tap reporter",
   "bin": "bin/tap-report",
   "main": "src/reporter.js",
