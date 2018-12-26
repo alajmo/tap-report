@@ -1,0 +1,28 @@
+TAP version 13
+# Subtest: /home/samir/projects/tap-report/test/tests/tap-output-1.js
+    ok 1 - optional message 0
+    ok 2 - optional message 1
+    ok 3 - optional message 2
+    ok 4 - deep equal 2
+    Some extra message
+    ok 5 - deep equal 2
+    1..5
+    # time=23.969ms
+not ok 1 - /home/samir/projects/tap-report/test/tests/tap-output-1.js # time=2318.879ms
+  ---
+  timeout: 30000
+  file: /home/samir/projects/tap-report/test/tests/tap-output-1.js
+  command: /usr/bin/node
+  args:
+    - /home/samir/projects/tap-report/test/tests/tap-output-1.js
+  stdio:
+    - 0
+    - pipe
+    - 2
+  cwd: /home/samir/projects/tap-report
+  exitCode: 1
+  ...
+
+1..1
+# failed 1 test
+# time=2345.88ms

@@ -32,6 +32,7 @@ tap.test('get thing',  t => {
   t.equal(2, 2, 'get thing sub test 2');
   t.end();
 });
+console.log('some extra');
 
 // tap.equal('foo', 'foo', 'bar');
 

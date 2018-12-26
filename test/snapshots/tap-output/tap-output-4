@@ -1,0 +1,50 @@
+TAP version 13
+# Subtest: /home/samir/projects/tap-report/test/tests/tap-output-4.js
+    ok 1 - foo
+    ok 2 - bar
+    # Subtest: subtests
+        not ok 1 - lala land
+          ---
+          found: 1
+          wanted: 2
+          compare: ===
+          at:
+            line: 8
+            column: 5
+            file: test/tests/tap-output-4.js
+            type: Test
+            function: tap.test.t
+          stack: |
+            Test.tap.test.t (test/tests/tap-output-4.js:8:5)
+            Object.<anonymous> (test/tests/tap-output-4.js:7:5)
+          source: |
+            t.equal(1, 2, 'lala land');
+          ...
+        
+        ok 2 - olololo
+        1..2
+        # failed 1 of 2 tests
+    not ok 3 - subtests # time=30.045ms
+    
+    ok 4 - bar
+    1..4
+    # failed 1 of 4 tests
+    # time=55.419ms
+not ok 1 - /home/samir/projects/tap-report/test/tests/tap-output-4.js # time=1480.25ms
+  ---
+  timeout: 30000
+  file: /home/samir/projects/tap-report/test/tests/tap-output-4.js
+  command: /usr/bin/node
+  args:
+    - /home/samir/projects/tap-report/test/tests/tap-output-4.js
+  stdio:
+    - 0
+    - pipe
+    - 2
+  cwd: /home/samir/projects/tap-report
+  exitCode: 1
+  ...
+
+1..1
+# failed 1 test
+# time=1516.706ms

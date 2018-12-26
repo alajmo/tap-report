@@ -1,0 +1,15 @@
+TAP version 13
+
+# Tests
+
+Bail out! # optional message 1
+
+# Summary
+
+Passed: 0
+Total: 0
+
+Duration: 1.5s
+
+All tests passed! 
+

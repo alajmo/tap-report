@@ -9,7 +9,7 @@
     "generate-test-data": "node test/index.js generate-test-data",
     "generate-media": "./scripts/generate-media.sh",
     "dev": "nodemon --quiet --exec \"clear && node test/tap-output.js | ./bin/tap-report \"",
-    "dev-tap": "nodemon --quiet --exec \"clear && node scripts/tap-report-example.js | ./bin/tap-report \"",
+    "dev-tap": "nodemon --quiet --exec \"clear && node scripts/tap-report-example.js\"",
     "dev-example": "nodemon --quiet --exec \"clear && node test/tap-output.js | ./bin/tap-report \"",
     "lint": "huel lint --src src",
     "format": "huel format --src src",
